@@ -47,12 +47,12 @@ var reactConfig={
 //remove any watchers not being used:
 
 //for less
-gulp.watch(lessConfig.targets,()=>{
+gulp.watch(lessConfig.targets).on("change",()=>{
     gulp.src(lessConfig.targets,{base:lessConfig.base}).pipe(less()).pipe(gulp.dest(lessConfig.base));
 });
 
 //for react
-gulp.watch(reactConfig.targets,()=>{
+gulp.watch(reactConfig.targets).on("change",()=>{
     gulp.src(reactConfig.targets,{base:reactConfig.base})
         .pipe(plumber(defaultPlumber))
         .pipe(babel({presets:["@babel/preset-react"]}))
