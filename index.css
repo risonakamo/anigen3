@@ -34,6 +34,18 @@ a:hover,
   opacity: 0.5;
   transition: opacity 0.2s;
 }
+.show-holder {
+  display: flex;
+}
+.show-holder .bracket {
+  width: 10px;
+  border: 1px solid white;
+  border-right: none;
+  flex: 0 10px;
+}
+.show-holder .actual-shows {
+  flex: 1;
+}
 .show {
   display: inline-block;
   width: 230px;

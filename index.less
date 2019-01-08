@@ -50,6 +50,24 @@ a:hover
     transition: opacity .2s;
 }
 
+.show-holder
+{
+    display: flex;
+
+    .bracket
+    {
+        width: 10px;
+        border: 1px solid white;
+        border-right: none;
+        flex: 0 10px;
+    }
+
+    .actual-shows
+    {
+        flex: 1;
+    }
+}
+
 //a show entry
 .show
 {
@@ -101,6 +119,7 @@ a:hover
         }
     }
 
+    //remove link button
     a
     {
         display: block;
@@ -110,6 +129,7 @@ a:hover
         opacity: .7;
     }
 
+    //because of specificity, needs explicit extend
     a:hover:extend(a:hover)
     {
 
