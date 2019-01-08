@@ -242,12 +242,19 @@ a:hover
 //a menu button
 .white-button
 {
+    display: inline;
     padding: 8px 54px 9px 54px;
     border-radius: 4px;
     background-color: white;
     font-size: 16px;
     color: @test-blue;
     text-decoration: none;
+    cursor: pointer;
+
+    &:hover
+    {
+        opacity: .7;
+    }
 
     &.green
     {

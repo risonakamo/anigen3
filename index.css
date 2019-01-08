@@ -155,12 +155,17 @@ a:hover,
   border-radius: 30px;
 }
 .white-button {
+  display: inline;
   padding: 8px 54px 9px 54px;
   border-radius: 4px;
   background-color: white;
   font-size: 16px;
   color: #5664b5;
   text-decoration: none;
+  cursor: pointer;
+}
+.white-button:hover {
+  opacity: 0.7;
 }
 .white-button.green {
   background-color: #1affaf;
