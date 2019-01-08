@@ -14,7 +14,11 @@
   src: url("fonts/NotoSansCJKjp-Bold.woff2");
   font-weight: 600;
 }
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   margin: 0;
   background-color: #5664b5;
   font-family: "noto sans";
@@ -33,6 +37,18 @@ a:hover,
 .show a:hover {
   opacity: 0.5;
   transition: opacity 0.2s;
+}
+.wrap {
+  display: flex;
+  height: 100%;
+}
+.show-holder-holders {
+  height: 100%;
+  flex: 1;
+  overflow: auto;
+}
+.menubar {
+  width: 320px;
 }
 .show-holder {
   display: flex;
