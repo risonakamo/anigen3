@@ -167,9 +167,10 @@ a:hover
     }
 }
 
+//main holder for menu elements
 .menu-block
 {
-    margin: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
 
     .left-text
     {
@@ -179,8 +180,15 @@ a:hover
         text-align: right;
         margin-right: 25px;
     }
+
+    //for larger top margin
+    &.double-top
+    {
+        padding-top: 20px;
+    }
 }
 
+//a white textbox
 .white-textbox
 {
     height: 45px;
@@ -192,6 +200,7 @@ a:hover
     color: @test-blue;
 }
 
+//a multi select element
 .white-multiselect
 {
     display: inline-block;
@@ -230,6 +239,7 @@ a:hover
     }
 }
 
+//a menu button
 .white-button
 {
     padding: 8px 54px 9px 54px;
