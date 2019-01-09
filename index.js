@@ -24,7 +24,7 @@ function anilistUserQuery(user,callback)
     };
 
     r.setRequestHeader("content-type","application/json");
-    r.send(JSON.stringify({query:`{MediaListCollection(userName:"${user}",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native},startDate{year,month},season,coverImage{large},siteUrl,genres,format}}}}}`}));
+    r.send(JSON.stringify({query:`{MediaListCollection(userName:"${user}",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native},startDate{year,month,day},season,coverImage{large},siteUrl,genres,format}}}}}`}));
 }
 
 //process FULL anilist data object.
