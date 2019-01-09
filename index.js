@@ -3,7 +3,9 @@ window.onload=main;
 function main()
 {
     anilistUserQuery("risona",(data)=>{
-        console.log(processAnlistDataShowType(data,"FALL",2018));
+        data=processAnlistDataShowType(data,"FALL",2018);
+
+        ReactDOM.render(React.createElement(ShowHold,{shows:data.TV,name:"TV"}),document.querySelector(".show-holder-holders"));
     });
 }
 

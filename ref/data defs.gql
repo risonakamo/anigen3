@@ -2,7 +2,7 @@
 #raw anilist api data object
 type TypeSortedShowsOutput
 {
-    [typeName]:[Show]
+    [typeName]:[Show] #arrays of Shows keyd by the Shows' types
 }
 
 #full show object from anilist api
@@ -11,7 +11,8 @@ type Show
 {
     title:{
         romaji:string,
-        native:string
+        native:string,
+        english:string
     },
 
     season:seasonString, #ENUM

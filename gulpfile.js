@@ -55,6 +55,6 @@ gulp.watch(lessConfig.targets).on("change",()=>{
 gulp.watch(reactConfig.targets).on("change",()=>{
     gulp.src(reactConfig.targets,{base:reactConfig.base})
         .pipe(plumber(defaultPlumber))
-        .pipe(babel({presets:["@babel/preset-react"]}))
+        .pipe(babel({presets:["@babel/preset-react"],comments:false}))
         .pipe(gulp.dest(reactConfig.base));
 });
