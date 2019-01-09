@@ -5,7 +5,8 @@ function main()
     anilistUserQuery("risona",(data)=>{
         data=processAnlistDataShowType(data,"WINTER",2019);
 
-        ReactDOM.render(React.createElement(ShowHold,{shows:data.TV,name:"TV"}),document.querySelector(".show-holder-holders"));
+        console.log(data);
+        ReactDOM.render(React.createElement(ShowHoldHold,{allshows:data}),document.querySelector(".show-holder-holders"));
     });
 }
 

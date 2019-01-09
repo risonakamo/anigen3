@@ -54,6 +54,7 @@ a:hover {
 }
 .show-holder {
   display: flex;
+  padding: 20px 0 20px 0;
 }
 .show-holder .bracket {
   width: 10px;

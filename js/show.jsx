@@ -1,3 +1,34 @@
+/*holds and handles show holders.
+  ShowHoldHold(TypeSortedShowsOutput allshows)
+  allshows: give it full processed data object from main data processing function*/
+class ShowHoldHold extends React.Component
+{
+  constructor(props)
+  {
+    super(props);
+
+    //rendering order for show types
+    this.defaultTypeSortOrder=["TV","TV_SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
+  }
+
+  render()
+  {
+    var res=[];
+
+    for (var x=0,l=this.defaultTypeSortOrder.length;x<l;x++)
+    {
+      if (this.props.allshows[this.defaultTypeSortOrder[x]])
+      {
+        res.push(<ShowHold shows={this.props.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x}/>);
+      }
+    }
+
+    return <>
+      {res}
+    </>;
+  }
+}
+
 /*show holder element. holds shows.
   ShowHold(Show-array shows, string name)
   shows: array of shows
@@ -30,11 +61,25 @@ class Show extends React.Component
 {
   render()
   {
+    //set the title with certain language. if missing, default to romaji
     var language=this.props.data.title[this.props.language];
 
     if (!language)
     {
       language=this.props.data.title.romaji;
+    }
+
+    //set the date. if month is missing, whole date is omitted.
+    //if only month exists, still shows only the month without the day.
+    var date="";
+    if (this.props.data.startDate.month)
+    {
+      date+=`${this.props.data.startDate.month}月`;
+
+      if (this.props.data.startDate.day)
+      {
+        date+=`${this.props.data.startDate.day}日`;
+      }
     }
 
     return (
@@ -50,9 +95,9 @@ class Show extends React.Component
           })}
         </div>
 
-        <p className="date">{`${this.props.data.startDate.month}月${this.props.data.startDate.day}日`}</p>
+        <p className="date">{date}</p>
 
-        <a href="" class="control-link">remove</a>
+        <a href="" className="control-link">remove</a>
       </div>
     );
   }

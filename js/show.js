@@ -1,3 +1,27 @@
+class ShowHoldHold extends React.Component {
+  constructor(props) {
+    super(props);
+    this.defaultTypeSortOrder = ["TV", "TV_SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
+  }
+
+  render() {
+    var res = [];
+
+    for (var x = 0, l = this.defaultTypeSortOrder.length; x < l; x++) {
+      if (this.props.allshows[this.defaultTypeSortOrder[x]]) {
+        res.push(React.createElement(ShowHold, {
+          shows: this.props.allshows[this.defaultTypeSortOrder[x]],
+          name: x,
+          key: x
+        }));
+      }
+    }
+
+    return React.createElement(React.Fragment, null, res);
+  }
+
+}
+
 class ShowHold extends React.Component {
   render() {
     return React.createElement("div", {
@@ -25,6 +49,16 @@ class Show extends React.Component {
       language = this.props.data.title.romaji;
     }
 
+    var date = "";
+
+    if (this.props.data.startDate.month) {
+      date += `${this.props.data.startDate.month}月`;
+
+      if (this.props.data.startDate.day) {
+        date += `${this.props.data.startDate.day}日`;
+      }
+    }
+
     return React.createElement("div", {
       className: "show"
     }, React.createElement("img", {
@@ -43,9 +77,9 @@ class Show extends React.Component {
       }, x);
     })), React.createElement("p", {
       className: "date"
-    }, `${this.props.data.startDate.month}月${this.props.data.startDate.day}日`), React.createElement("a", {
+    }, date), React.createElement("a", {
       href: "",
-      class: "control-link"
+      className: "control-link"
     }, "remove"));
   }
 
