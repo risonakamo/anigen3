@@ -1,0 +1,43 @@
+# actual GQL btw LULW
+
+{
+  # all the shows of a user
+  MediaListCollection(userName:"risona",type:ANIME,sort:[ADDED_TIME_DESC])
+  {
+    # each list of shows, containing lists of shows and the name of the list
+    lists
+    {
+      name,
+
+      # the array of shows
+      entries
+      {
+        # the media itself
+        media
+      	{
+          title {
+            romaji,
+            native
+          },
+
+          startDate {
+            year,
+            month
+          },
+
+          season,
+
+          coverImage {
+            large
+          },
+
+          siteUrl,
+
+          genres,
+
+          format
+        }
+      }
+    }
+  }
+}
