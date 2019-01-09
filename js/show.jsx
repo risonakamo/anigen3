@@ -32,11 +32,16 @@ class Show extends React.Component
   {
     var language=this.props.data.title[this.props.language];
 
+    if (!language)
+    {
+      language=this.props.data.title.romaji;
+    }
+
     return (
       <div className="show">
         <img src={this.props.data.coverImage.large}/>
 
-        <p className="title">{language}</p>
+        <a href={this.props.data.siteUrl} className="title" target="_blank">{language}</a>
 
         <div className="tags">
           <span className="type">{this.props.data.format}</span>
@@ -47,7 +52,7 @@ class Show extends React.Component
 
         <p className="date">{`${this.props.data.startDate.month}月${this.props.data.startDate.day}日`}</p>
 
-        <a href="">remove</a>
+        <a href="" class="control-link">remove</a>
       </div>
     );
   }

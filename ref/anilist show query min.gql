@@ -1,1 +1,2 @@
+#make sure to update the actual query string in index.js, anilistUserQuery()
 {MediaListCollection(userName:"risona",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native,english},startDate{year,month,day},season,coverImage{large},siteUrl,genres,format}}}}}

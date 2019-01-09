@@ -3,7 +3,7 @@ window.onload=main;
 function main()
 {
     anilistUserQuery("risona",(data)=>{
-        data=processAnlistDataShowType(data,"FALL",2018);
+        data=processAnlistDataShowType(data,"WINTER",2019);
 
         ReactDOM.render(React.createElement(ShowHold,{shows:data.TV,name:"TV"}),document.querySelector(".show-holder-holders"));
     });
@@ -26,7 +26,7 @@ function anilistUserQuery(user,callback)
     };
 
     r.setRequestHeader("content-type","application/json");
-    r.send(JSON.stringify({query:`{MediaListCollection(userName:"${user}",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native},startDate{year,month,day},season,coverImage{large},siteUrl,genres,format}}}}}`}));
+    r.send(JSON.stringify({query:`{MediaListCollection(userName:"${user}",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native,english},startDate{year,month,day},season,coverImage{large},siteUrl,genres,format}}}}}`}));
 }
 
 //process FULL anilist data object.

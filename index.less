@@ -44,17 +44,19 @@ p
 {
     margin: 0;
     padding: 0;
+    line-height: 25px;
 }
 
 a
 {
     color: white;
+    text-decoration: none;
     opacity: 1;
 }
 
 a:hover
 {
-    opacity: .5;
+    opacity: .7;
     transition: opacity .2s;
 }
 
@@ -114,9 +116,11 @@ a:hover
 
     .title
     {
+        &:extend(p);
         display: inline-block;
         width: 100%;
         font-size: 25px;
+        margin: 10px 0 10px 0;
     }
 
     .tags
@@ -146,19 +150,19 @@ a:hover
     }
 
     //remove link button
-    a
+    .control-link
     {
         display: block;
         font-size: @main-small-font-size;
         font-weight: 400;
         font-style: italic;
+        text-decoration: underline;
         opacity: .7;
     }
 
-    //because of specificity, needs explicit extend
-    a:hover:extend(a:hover)
+    .control-link:hover
     {
-
+        opacity: .5;
     }
 
     .date

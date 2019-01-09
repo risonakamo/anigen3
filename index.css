@@ -25,17 +25,19 @@ body {
   font-size: 0;
   color: white;
 }
-p {
+p,
+.show .title {
   margin: 0;
   padding: 0;
+  line-height: 25px;
 }
 a {
   color: white;
+  text-decoration: none;
   opacity: 1;
 }
-a:hover,
-.show a:hover {
-  opacity: 0.5;
+a:hover {
+  opacity: 0.7;
   transition: opacity 0.2s;
 }
 .wrap {
@@ -79,6 +81,7 @@ a:hover,
   display: inline-block;
   width: 100%;
   font-size: 25px;
+  margin: 10px 0 10px 0;
 }
 .show .tags {
   width: 100%;
@@ -100,12 +103,16 @@ a:hover,
   background-color: #f5e03e;
   margin-left: auto;
 }
-.show a {
+.show .control-link {
   display: block;
   font-size: 10px;
   font-weight: 400;
   font-style: italic;
+  text-decoration: underline;
   opacity: 0.7;
+}
+.show .control-link:hover {
+  opacity: 0.5;
 }
 .show .date {
   font-size: 10px;

@@ -20,12 +20,19 @@ class ShowHold extends React.Component {
 class Show extends React.Component {
   render() {
     var language = this.props.data.title[this.props.language];
+
+    if (!language) {
+      language = this.props.data.title.romaji;
+    }
+
     return React.createElement("div", {
       className: "show"
     }, React.createElement("img", {
       src: this.props.data.coverImage.large
-    }), React.createElement("p", {
-      className: "title"
+    }), React.createElement("a", {
+      href: this.props.data.siteUrl,
+      className: "title",
+      target: "_blank"
     }, language), React.createElement("div", {
       className: "tags"
     }, React.createElement("span", {
@@ -37,7 +44,8 @@ class Show extends React.Component {
     })), React.createElement("p", {
       className: "date"
     }, `${this.props.data.startDate.month}月${this.props.data.startDate.day}日`), React.createElement("a", {
-      href: ""
+      href: "",
+      class: "control-link"
     }, "remove"));
   }
 
