@@ -22,7 +22,8 @@
 
           startDate {
             year,
-            month
+            month,
+            day
           },
 
           season,

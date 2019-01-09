@@ -1,0 +1,36 @@
+#proposed output def of type filter function that goes over
+#raw anilist api data object
+type TypeSortedShowsOutput
+{
+    [typeName]:[Show]
+}
+
+#full show object from anilist api
+#watch out, this def could magically change
+type Show
+{
+    title:{
+        romaji:string,
+        native:string
+    },
+
+    season:seasonString, #ENUM
+    startDate:{
+        year:int,
+        month:int,
+        day:int
+    },
+
+    format:string, #show TYPE
+    genres:[string], #genre tag strings
+
+    coverImage:{
+        large:string # url of cover image
+    },
+    siteUrl:string #url to page
+}
+
+enum seasonString
+{
+    FALL,WINTER,SPRING,SUMMER
+}

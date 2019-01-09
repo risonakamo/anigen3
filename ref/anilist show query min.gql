@@ -1,0 +1,1 @@
+{MediaListCollection(userName:"risona",type:ANIME,sort:[ADDED_TIME_DESC]){lists{name,entries{media{title{romaji,native},startDate{year,month,day},season,coverImage{large},siteUrl,genres,format}}}}}
