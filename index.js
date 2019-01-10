@@ -6,7 +6,7 @@ function main()
         data=processAnlistDataShowType(data,"WINTER",2019);
 
         console.log(data);
-        ReactDOM.render(React.createElement(ShowHoldHold,{allshows:data}),document.querySelector(".show-holder-holders"));
+        ReactDOM.render(React.createElement(AniGenTop,{allshows:data}),document.querySelector(".menubar"));
     });
 }
 
