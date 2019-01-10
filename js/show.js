@@ -59,19 +59,26 @@ class Show extends React.Component {
       }
     }
 
+    var type = this.props.data.format;
+
+    if (type == "TV_SHORT") {
+      type = "SHORT";
+    }
+
     return React.createElement("div", {
       className: "show"
     }, React.createElement("img", {
       src: this.props.data.coverImage.large
-    }), React.createElement("a", {
+    }), React.createElement("p", {
+      className: "title"
+    }, React.createElement("a", {
       href: this.props.data.siteUrl,
-      className: "title",
       target: "_blank"
-    }, language), React.createElement("div", {
+    }, language)), React.createElement("div", {
       className: "tags"
     }, React.createElement("span", {
       className: "type"
-    }, this.props.data.format), this.props.data.genres.map((x, i) => {
+    }, type), this.props.data.genres.map((x, i) => {
       return React.createElement("span", {
         key: i
       }, x);

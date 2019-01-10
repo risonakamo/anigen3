@@ -82,14 +82,21 @@ class Show extends React.Component
       }
     }
 
+    //quick edit to show type string
+    var type=this.props.data.format;
+    if (type=="TV_SHORT")
+    {
+      type="SHORT";
+    }
+
     return (
       <div className="show">
         <img src={this.props.data.coverImage.large}/>
 
-        <a href={this.props.data.siteUrl} className="title" target="_blank">{language}</a>
+        <p className="title"><a href={this.props.data.siteUrl} target="_blank">{language}</a></p>
 
         <div className="tags">
-          <span className="type">{this.props.data.format}</span>
+          <span className="type">{type}</span>
           {this.props.data.genres.map((x,i)=>{
             return <span key={i}>{x}</span>;
           })}
