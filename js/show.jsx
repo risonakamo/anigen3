@@ -7,7 +7,7 @@ class ShowHoldHold extends React.Component
     super(props);
 
     this.state={
-      //allshows:null
+      allshows:{}
     };
 
     //rendering order for show types
@@ -23,11 +23,6 @@ class ShowHoldHold extends React.Component
 
   render()
   {
-    if (!this.state.allshows)
-    {
-      return null;
-    }
-
     var res=[];
 
     for (var x=0,l=this.defaultTypeSortOrder.length;x<l;x++)

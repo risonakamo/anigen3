@@ -1,7 +1,9 @@
 class ShowHoldHold extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      allshows: {}
+    };
     this.defaultTypeSortOrder = ["TV", "TV_SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
   }
 
@@ -12,10 +14,6 @@ class ShowHoldHold extends React.Component {
   }
 
   render() {
-    if (!this.state.allshows) {
-      return null;
-    }
-
     var res = [];
 
     for (var x = 0, l = this.defaultTypeSortOrder.length; x < l; x++) {

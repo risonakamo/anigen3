@@ -1,7 +1,20 @@
 /*menu element.
-  ShowMenu()*/
+  ShowMenu(function renderShows)
+  renderShows: function from parent AniGenTop*/
 class ShowMenu extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.renderShowCall=this.renderShowCall.bind(this);
+  }
+
+  //call rendershow with data from this menu
+  renderShowCall()
+  {
+    this.props.renderShows("risona","WINTER",2019);
+  }
+
   render()
   {
     return <>
@@ -30,7 +43,7 @@ class ShowMenu extends React.Component
 
       <div className="menu-block">
         <div className="left-text"></div>
-        <div className="white-button green">完了</div>
+        <div className="white-button green" onClick={this.renderShowCall}>完了</div>
       </div>
     </>;
   }

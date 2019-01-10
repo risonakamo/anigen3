@@ -1,4 +1,13 @@
 class ShowMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderShowCall = this.renderShowCall.bind(this);
+  }
+
+  renderShowCall() {
+    this.props.renderShows("risona", "WINTER", 2019);
+  }
+
   render() {
     return React.createElement(React.Fragment, null, React.createElement("div", {
       className: "menu-block"
@@ -33,7 +42,8 @@ class ShowMenu extends React.Component {
     }, React.createElement("div", {
       className: "left-text"
     }), React.createElement("div", {
-      className: "white-button green"
+      className: "white-button green",
+      onClick: this.renderShowCall
     }, "\u5B8C\u4E86")));
   }
 

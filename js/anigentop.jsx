@@ -2,19 +2,28 @@
   AniGenTop()*/
 class AniGenTop extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.renderShows=this.renderShows.bind(this);
+
+    this.showHoldHold=React.createRef();
+  }
+
+  //public, perform api query and show render
   renderShows(username,season,year)
   {
     anilistUserQuery(username,(data)=>{
-      data=processAnlistDataShowType(data,"WINTER",2019);
+      this.showHoldHold.current.loadShowData(processAnlistDataShowType(data,season,year));
     });
   }
 
   render()
   {
     return <>
-      <ShowMenu/>
+      <ShowMenu renderShows={this.renderShows}/>
 
-      {ReactDOM.createPortal(<ShowHoldHold/>,document.querySelector(".show-holder-holders"))}
+      {ReactDOM.createPortal(<ShowHoldHold ref={this.showHoldHold}/>,document.querySelector(".show-holder-holders"))}
     </>;
   }
 }
