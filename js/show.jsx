@@ -104,7 +104,7 @@ class Show extends React.Component
 
         <p className="date">{date}</p>
 
-        <a href="" className="control-link">remove</a>
+        <div className="control-link">remove</div>
       </div>
     );
   }

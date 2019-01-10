@@ -84,8 +84,7 @@ class Show extends React.Component {
       }, x);
     })), React.createElement("p", {
       className: "date"
-    }, date), React.createElement("a", {
-      href: "",
+    }, date), React.createElement("div", {
       className: "control-link"
     }, "remove"));
   }
