@@ -1,6 +1,6 @@
 {
   "name": "anigen3",
-  "version": "1.0.0",
+  "version": "3.0",
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-react": "^7.0.0",

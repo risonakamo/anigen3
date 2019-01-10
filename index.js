@@ -71,5 +71,34 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
         }
     }
 
+    //over all filtered shows
+    for (var x in res)
+    {
+        //sort by date, ascending
+        res[x].sort((a,b)=>{
+            //shows missing date data go to the end
+            if (a.startDate.month==null || !a.startDate.day || b.startDate.month==null || !b.startDate.day)
+            {
+                return -1;
+            }
+
+            //date takes month index
+            a=new Date(a.startDate.year,a.startDate.month-1,a.startDate.day);
+            b=new Date(b.startDate.year,b.startDate.month-1,b.startDate.day);
+
+            if (a<b)
+            {
+                return -1;
+            }
+
+            else if (a>b)
+            {
+                return 1;
+            }
+
+            return 0;
+        });
+    }
+
     return res;
 }
