@@ -2,12 +2,13 @@ window.onload=main;
 
 function main()
 {
-    anilistUserQuery("risona",(data)=>{
-        data=processAnlistDataShowType(data,"WINTER",2019);
+    // anilistUserQuery("risona",(data)=>{
+    //     data=processAnlistDataShowType(data,"WINTER",2019);
 
-        console.log(data);
-        ReactDOM.render(React.createElement(AniGenTop,{allshows:data}),document.querySelector(".menubar"));
-    });
+    //     console.log(data);
+    // });
+
+    ReactDOM.render(React.createElement(AniGenTop),document.querySelector(".menubar"));
 }
 
 //make a media list request to anilist using a constructed query.

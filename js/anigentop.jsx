@@ -1,14 +1,20 @@
 /*top controller for react elements of anigen system.
-  AniGenTop(TypeSortedShowsOutput allshows)
-  allshows: full processed data object from main data processing, to be given to ShowHoldHold*/
+  AniGenTop()*/
 class AniGenTop extends React.Component
 {
+  renderShows(username,season,year)
+  {
+    anilistUserQuery(username,(data)=>{
+      data=processAnlistDataShowType(data,"WINTER",2019);
+    });
+  }
+
   render()
   {
     return <>
       <ShowMenu/>
 
-      {ReactDOM.createPortal(<ShowHoldHold allshows={this.props.allshows}/>,document.querySelector(".show-holder-holders"))}
+      {ReactDOM.createPortal(<ShowHoldHold/>,document.querySelector(".show-holder-holders"))}
     </>;
   }
 }

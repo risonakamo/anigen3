@@ -1,25 +1,40 @@
 /*holds and handles show holders.
-  ShowHoldHold(TypeSortedShowsOutput allshows)
-  allshows: give it full processed data object from main data processing function*/
+  ShowHoldHold()*/
 class ShowHoldHold extends React.Component
 {
   constructor(props)
   {
     super(props);
 
+    this.state={
+      //allshows:null
+    };
+
     //rendering order for show types
     this.defaultTypeSortOrder=["TV","TV_SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
   }
 
+  //public, recieve a show data object and load it
+  //show object should be full TypeSortedShowsOutput object from processing function
+  loadShowData(data)
+  {
+    this.setState({allshows:data});
+  }
+
   render()
   {
+    if (!this.state.allshows)
+    {
+      return null;
+    }
+
     var res=[];
 
     for (var x=0,l=this.defaultTypeSortOrder.length;x<l;x++)
     {
-      if (this.props.allshows[this.defaultTypeSortOrder[x]])
+      if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
-        res.push(<ShowHold shows={this.props.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x}/>);
+        res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x}/>);
       }
     }
 

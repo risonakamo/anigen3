@@ -1,16 +1,27 @@
 class ShowHoldHold extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
     this.defaultTypeSortOrder = ["TV", "TV_SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
   }
 
+  loadShowData(data) {
+    this.setState({
+      allshows: data
+    });
+  }
+
   render() {
+    if (!this.state.allshows) {
+      return null;
+    }
+
     var res = [];
 
     for (var x = 0, l = this.defaultTypeSortOrder.length; x < l; x++) {
-      if (this.props.allshows[this.defaultTypeSortOrder[x]]) {
+      if (this.state.allshows[this.defaultTypeSortOrder[x]]) {
         res.push(React.createElement(ShowHold, {
-          shows: this.props.allshows[this.defaultTypeSortOrder[x]],
+          shows: this.state.allshows[this.defaultTypeSortOrder[x]],
           name: x,
           key: x
         }));
