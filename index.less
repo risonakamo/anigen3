@@ -193,6 +193,11 @@ a
         font-size: 18px;
         text-align: right;
         margin-right: 25px;
+
+        &.top
+        {
+            vertical-align: top;
+        }
     }
 
     //for larger top margin
@@ -230,6 +235,7 @@ a
         {
             background-color: white;
             color: @test-blue;
+            transition: background-color .4s,color .4s;
 
             &:hover
             {
@@ -241,6 +247,14 @@ a
         {
             color: @main-yellow;
         }
+    }
+
+    //special class modifier for a wider, multiline select thing
+    &.multi-line-wide
+    {
+        width: 150px;
+        text-align: center;
+        line-height: 25px;
     }
 
     //give pill class for pill shaped selection options

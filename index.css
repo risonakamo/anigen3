@@ -129,6 +129,9 @@ a:hover {
   text-align: right;
   margin-right: 25px;
 }
+.menu-block .left-text.top {
+  vertical-align: top;
+}
 .menu-block.double-top {
   padding-top: 20px;
 }
@@ -153,12 +156,18 @@ a:hover {
 .white-multiselect span.selected {
   background-color: white;
   color: #5664b5;
+  transition: background-color 0.4s, color 0.4s;
 }
 .white-multiselect span.selected:hover {
   color: #5664b5;
 }
 .white-multiselect span:hover {
   color: #f5e30d;
+}
+.white-multiselect.multi-line-wide {
+  width: 150px;
+  text-align: center;
+  line-height: 25px;
 }
 .white-multiselect.pill span {
   border-radius: 30px;
