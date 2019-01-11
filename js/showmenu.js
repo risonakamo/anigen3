@@ -16,7 +16,16 @@ class ShowMenu extends React.Component {
       return;
     }
 
-    this.props.renderShows(this.menuFields.username.current.value, this.menuFields.season.current.getValue(), this.menuFields.year.current.value, this.menuFields.lang.current.getValue());
+    var menuOptions = {
+      username: this.menuFields.username.current.value,
+      season: this.menuFields.season.current.getValue(),
+      year: this.menuFields.year.current.value,
+      lang: this.menuFields.lang.current.getValue()
+    };
+    this.props.renderShows(menuOptions.username, menuOptions.season[1], menuOptions.year, menuOptions.lang[1]);
+    menuOptions.season = menuOptions.season[0];
+    menuOptions.lang = menuOptions.lang[0];
+    window.localStorage.setItem("anigen3", JSON.stringify(menuOptions));
   }
 
   render() {
@@ -73,7 +82,7 @@ class WhiteMultiSelect extends React.Component {
   }
 
   getValue() {
-    return this.props.choices[this.state.selected];
+    return [this.state.selected, this.props.choices[this.state.selected]];
   }
 
   render() {

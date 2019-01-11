@@ -18,6 +18,7 @@ class ShowMenu extends React.Component
   }
 
   //call rendershow with data from this menu
+  //and also save to localStorage
   renderShowCall()
   {
     if (!this.menuFields.username.current.value || this.menuFields.year.current.value<1990
@@ -27,9 +28,23 @@ class ShowMenu extends React.Component
       return;
     }
 
-    this.props.renderShows(this.menuFields.username.current.value,
-      this.menuFields.season.current.getValue(),this.menuFields.year.current.value,
-      this.menuFields.lang.current.getValue());
+    var menuOptions={
+      username:this.menuFields.username.current.value,
+      season:this.menuFields.season.current.getValue(),
+      year:this.menuFields.year.current.value,
+      lang:this.menuFields.lang.current.getValue()
+    };
+
+    //season and lang use index 1 for the string value
+    this.props.renderShows(menuOptions.username,menuOptions.season[1],
+      menuOptions.year,menuOptions.lang[1]
+    );
+
+    //setting season and lang to the index number and not the string
+    menuOptions.season=menuOptions.season[0];
+    menuOptions.lang=menuOptions.lang[0];
+
+    window.localStorage.setItem("anigen3",JSON.stringify(menuOptions));
   }
 
   render()
@@ -86,10 +101,12 @@ class WhiteMultiSelect extends React.Component
     };
   }
 
-  //public, return the value that is selected
+  //public, return the array [int valueIndex,string value]
+  //valueIndex: index of the selected value
+  //value: the string value that is chosen
   getValue()
   {
-    return this.props.choices[this.state.selected];
+    return [this.state.selected,this.props.choices[this.state.selected]];
   }
 
   render()

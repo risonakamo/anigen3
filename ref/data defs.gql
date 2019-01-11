@@ -35,3 +35,14 @@ enum seasonString
 {
     FALL,WINTER,SPRING,SUMMER
 }
+
+#localstorage layout
+type localStorage
+{
+    anigen3:{
+        username:string,
+        season:int,
+        year:int,
+        lang:int
+    }
+}
