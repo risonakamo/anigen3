@@ -14,6 +14,7 @@ class ShowHoldHold extends React.Component
 
     //rendering order for show types
     this.defaultTypeSortOrder=["TV","SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
+    this.parentContainer=document.querySelector(".show-holder-holders"); //the parent element that holds stuff
   }
 
   //public, recieve a show data object and load it
@@ -21,6 +22,7 @@ class ShowHoldHold extends React.Component
   loadShowData(data,language)
   {
     this.setState({allshows:data,language:language});
+    this.parentContainer.scrollTo(0,0);
   }
 
   //public passdown, remove a show given the type and title
@@ -45,7 +47,7 @@ class ShowHoldHold extends React.Component
     }
 
     //rerender
-    this.setState({allshows:this.state.allshows});
+    this.loadShowData(this.state.allshows,this.state.language);
   }
 
   render()

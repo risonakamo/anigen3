@@ -7,6 +7,7 @@ class ShowHoldHold extends React.Component {
       language: "native"
     };
     this.defaultTypeSortOrder = ["TV", "SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
+    this.parentContainer = document.querySelector(".show-holder-holders");
   }
 
   loadShowData(data, language) {
@@ -14,6 +15,7 @@ class ShowHoldHold extends React.Component {
       allshows: data,
       language: language
     });
+    this.parentContainer.scrollTo(0, 0);
   }
 
   removeShow(type, title) {
@@ -30,9 +32,7 @@ class ShowHoldHold extends React.Component {
       delete this.state.allshows[type];
     }
 
-    this.setState({
-      allshows: this.state.allshows
-    });
+    this.loadShowData(this.state.allshows, this.state.language);
   }
 
   render() {
