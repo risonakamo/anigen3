@@ -28,13 +28,14 @@
 html
 {
     height: 100%;
+    --main-colour: @test-blue;
 }
 
 body
 {
     height: 100%;
     margin: 0;
-    background-color: @test-blue;
+    background-color: var(--main-colour);
     font-family: "noto sans";
     font-size: 0;
     color: white;
@@ -138,7 +139,7 @@ a
         {
             display: inline-block;
             font-size: @main-small-font-size;
-            color: @test-blue;
+            color: var(--main-colour);
             background-color: white;
             padding: 0 10px 0 10px;
             border-radius: 20px;
@@ -216,7 +217,7 @@ a
     border: none;
     border-radius: 4px;
     font-size: 20px;
-    color: @test-blue;
+    color: var(--main-colour);
 }
 
 //a multi select element
@@ -234,12 +235,12 @@ a
         &.selected
         {
             background-color: white;
-            color: @test-blue;
+            color: var(--main-colour);
             transition: background-color .4s,color .4s;
 
             &:hover
             {
-                color: @test-blue;
+                color: var(--main-colour);
             }
         }
 
@@ -275,7 +276,7 @@ a
     border-radius: 4px;
     background-color: white;
     font-size: 16px;
-    color: @test-blue;
+    color: var(--main-colour);
     text-decoration: none;
     cursor: pointer;
 

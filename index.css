@@ -16,11 +16,12 @@
 }
 html {
   height: 100%;
+  --main-colour: #5664b5;
 }
 body {
   height: 100%;
   margin: 0;
-  background-color: #5664b5;
+  background-color: var(--main-colour);
   font-family: "noto sans";
   font-size: 0;
   color: white;
@@ -90,7 +91,7 @@ a:hover {
 .show .tags span {
   display: inline-block;
   font-size: 10px;
-  color: #5664b5;
+  color: var(--main-colour);
   background-color: white;
   padding: 0 10px 0 10px;
   border-radius: 20px;
@@ -142,7 +143,7 @@ a:hover {
   border: none;
   border-radius: 4px;
   font-size: 20px;
-  color: #5664b5;
+  color: var(--main-colour);
 }
 .white-multiselect {
   display: inline-block;
@@ -155,11 +156,11 @@ a:hover {
 }
 .white-multiselect span.selected {
   background-color: white;
-  color: #5664b5;
+  color: var(--main-colour);
   transition: background-color 0.4s, color 0.4s;
 }
 .white-multiselect span.selected:hover {
-  color: #5664b5;
+  color: var(--main-colour);
 }
 .white-multiselect span:hover {
   color: #f5e30d;
@@ -178,7 +179,7 @@ a:hover {
   border-radius: 4px;
   background-color: white;
   font-size: 16px;
-  color: #5664b5;
+  color: var(--main-colour);
   text-decoration: none;
   cursor: pointer;
 }
