@@ -48,6 +48,11 @@ class ShowMenu extends React.Component {
   render() {
     return React.createElement(React.Fragment, null, React.createElement("div", {
       className: "menu-block"
+    }, React.createElement("img", {
+      class: "logo",
+      src: "img/ag-logo.png"
+    })), React.createElement("div", {
+      className: "menu-block"
     }, React.createElement("div", {
       className: "left-text"
     }, "Anilist ID"), React.createElement("input", {

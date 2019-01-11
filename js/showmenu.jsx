@@ -73,6 +73,8 @@ class ShowMenu extends React.Component
   render()
   {
     return <>
+      <div className="menu-block"><img class="logo" src="img/ag-logo.png"/></div>
+
       <div className="menu-block">
         <div className="left-text">Anilist ID</div>
         <input type="text" className="white-textbox" ref={this.menuFields.username}/>

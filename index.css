@@ -144,6 +144,10 @@ a:hover {
 .menu-block.double-top {
   padding-top: 20px;
 }
+.menu-block img.logo {
+  display: block;
+  margin: auto;
+}
 .white-textbox {
   height: 45px;
   width: 120px;
