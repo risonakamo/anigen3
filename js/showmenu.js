@@ -2,10 +2,21 @@ class ShowMenu extends React.Component {
   constructor(props) {
     super(props);
     this.renderShowCall = this.renderShowCall.bind(this);
+    this.menuFields = {
+      username: React.createRef(),
+      season: React.createRef(),
+      year: React.createRef(),
+      lang: React.createRef()
+    };
   }
 
   renderShowCall() {
-    this.props.renderShows("risona", "WINTER", 2019);
+    if (!this.menuFields.username.current.value || this.menuFields.year.current.value < 1990 || this.menuFields.year.current.value > 3000) {
+      console.log("invalid field");
+      return;
+    }
+
+    this.props.renderShows(this.menuFields.username.current.value, this.menuFields.season.current.getValue(), this.menuFields.year.current.value);
   }
 
   render() {
@@ -15,20 +26,23 @@ class ShowMenu extends React.Component {
       className: "left-text"
     }, "Anilist ID"), React.createElement("input", {
       type: "text",
-      className: "white-textbox"
+      className: "white-textbox",
+      ref: this.menuFields.username
     })), React.createElement("div", {
       className: "menu-block"
     }, React.createElement(WhiteMultiSelect, {
       title: "\u5B63\u7BC0",
       actualChoices: ["春", "夏", "秋", "冬"],
-      choices: ["SPRING", "SUMMER", "FALL", "WINTER"]
+      choices: ["SPRING", "SUMMER", "FALL", "WINTER"],
+      ref: this.menuFields.season
     })), React.createElement("div", {
       className: "menu-block"
     }, React.createElement("div", {
       className: "left-text"
     }, "\u5E74"), React.createElement("input", {
       type: "number",
-      className: "white-textbox"
+      className: "white-textbox",
+      ref: this.menuFields.year
     })), React.createElement("div", {
       className: "menu-block"
     }, React.createElement(WhiteMultiSelect, {
@@ -36,7 +50,8 @@ class ShowMenu extends React.Component {
       actualChoices: ["日本語", "英語", "実際英語"],
       choices: ["native", "romaji", "english"],
       customClasses: "pill multi-line-wide",
-      leftTextClass: "top"
+      leftTextClass: "top",
+      ref: this.menuFields.lang
     })), React.createElement("div", {
       className: "menu-block"
     }, React.createElement("div", {
@@ -55,6 +70,10 @@ class WhiteMultiSelect extends React.Component {
     this.state = {
       selected: 0
     };
+  }
+
+  getValue() {
+    return this.props.choices[this.state.selected];
   }
 
   render() {

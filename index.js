@@ -2,12 +2,6 @@ window.onload=main;
 
 function main()
 {
-    // anilistUserQuery("risona",(data)=>{
-    //     data=processAnlistDataShowType(data,"WINTER",2019);
-
-    //     console.log(data);
-    // });
-
     ReactDOM.render(React.createElement(AniGenTop),document.querySelector(".menubar"));
 }
 

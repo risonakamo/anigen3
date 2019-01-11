@@ -10,7 +10,7 @@ class AniGenTop extends React.Component
     this.showHoldHold=React.createRef();
   }
 
-  //public, perform api query and show render
+  //public passdown, perform api query and show render
   renderShows(username,season,year)
   {
     anilistUserQuery(username,(data)=>{
