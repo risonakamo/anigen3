@@ -50,6 +50,15 @@ a:hover {
   flex: 1;
   overflow: auto;
 }
+.show-holder-holders > h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 0 0 85px;
+}
+.show-holder-holders > h1 span {
+  color: #f5e30d;
+}
 .menubar {
   width: 320px;
 }

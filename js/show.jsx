@@ -65,6 +65,7 @@ class ShowHoldHold extends React.Component
     }
 
     return <>
+      <h1><span>冬</span>2019アニメ</h1>
       {res}
     </>;
   }
