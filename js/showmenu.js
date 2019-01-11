@@ -10,6 +10,10 @@ class ShowMenu extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.loadLocalStorage();
+  }
+
   renderShowCall() {
     if (!this.menuFields.username.current.value || this.menuFields.year.current.value < 1990 || this.menuFields.year.current.value > 3000) {
       console.log("invalid field");
@@ -23,9 +27,22 @@ class ShowMenu extends React.Component {
       lang: this.menuFields.lang.current.getValue()
     };
     this.props.renderShows(menuOptions.username, menuOptions.season[1], menuOptions.year, menuOptions.lang[1]);
-    menuOptions.season = menuOptions.season[0];
-    menuOptions.lang = menuOptions.lang[0];
     window.localStorage.setItem("anigen3", JSON.stringify(menuOptions));
+  }
+
+  loadLocalStorage() {
+    var data = localStorage.anigen3;
+
+    if (!data) {
+      return;
+    }
+
+    data = JSON.parse(data);
+    this.menuFields.username.current.value = data.username;
+    this.menuFields.season.current.setValue(data.season[0]);
+    this.menuFields.year.current.value = data.year;
+    this.menuFields.lang.current.setValue(data.lang[0]);
+    this.props.renderShows(data.username, data.season[1], data.year, data.lang[1]);
   }
 
   render() {
@@ -83,6 +100,12 @@ class WhiteMultiSelect extends React.Component {
 
   getValue() {
     return [this.state.selected, this.props.choices[this.state.selected]];
+  }
+
+  setValue(value) {
+    this.setState({
+      selected: value
+    });
   }
 
   render() {

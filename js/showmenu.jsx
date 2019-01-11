@@ -17,6 +17,11 @@ class ShowMenu extends React.Component
     };
   }
 
+  componentDidMount()
+  {
+    this.loadLocalStorage();
+  }
+
   //call rendershow with data from this menu
   //and also save to localStorage
   renderShowCall()
@@ -40,11 +45,29 @@ class ShowMenu extends React.Component
       menuOptions.year,menuOptions.lang[1]
     );
 
-    //setting season and lang to the index number and not the string
-    menuOptions.season=menuOptions.season[0];
-    menuOptions.lang=menuOptions.lang[0];
-
     window.localStorage.setItem("anigen3",JSON.stringify(menuOptions));
+  }
+
+  //see if localstorage has anigen3 saved data. put it into the menu fields
+  //and immediately rendershow
+  loadLocalStorage()
+  {
+    var data=localStorage.anigen3;
+
+    if (!data)
+    {
+      return;
+    }
+
+    data=JSON.parse(data);
+
+    this.menuFields.username.current.value=data.username;
+    this.menuFields.season.current.setValue(data.season[0]);
+    this.menuFields.year.current.value=data.year;
+    this.menuFields.lang.current.setValue(data.lang[0]);
+
+    //user rendershows directly to avoid race with setValue
+    this.props.renderShows(data.username,data.season[1],data.year,data.lang[1]);
   }
 
   render()
@@ -107,6 +130,12 @@ class WhiteMultiSelect extends React.Component
   getValue()
   {
     return [this.state.selected,this.props.choices[this.state.selected]];
+  }
+
+  //public, set the selected option to the given INDEX. no error checking.
+  setValue(value)
+  {
+    this.setState({selected:value});
   }
 
   render()
