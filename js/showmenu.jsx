@@ -28,7 +28,8 @@ class ShowMenu extends React.Component
     }
 
     this.props.renderShows(this.menuFields.username.current.value,
-      this.menuFields.season.current.getValue(),this.menuFields.year.current.value);
+      this.menuFields.season.current.getValue(),this.menuFields.year.current.value,
+      this.menuFields.lang.current.getValue());
   }
 
   render()

@@ -2,14 +2,16 @@ class ShowHoldHold extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allshows: {}
+      allshows: {},
+      language: "native"
     };
     this.defaultTypeSortOrder = ["TV", "TV_SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
   }
 
-  loadShowData(data) {
+  loadShowData(data, language) {
     this.setState({
-      allshows: data
+      allshows: data,
+      language: language
     });
   }
 
@@ -21,7 +23,8 @@ class ShowHoldHold extends React.Component {
         res.push(React.createElement(ShowHold, {
           shows: this.state.allshows[this.defaultTypeSortOrder[x]],
           name: x,
-          key: x
+          key: x,
+          language: this.state.language
         }));
       }
     }
@@ -43,7 +46,7 @@ class ShowHold extends React.Component {
       return React.createElement(Show, {
         data: x,
         key: i,
-        language: "native"
+        language: this.props.language
       });
     })));
   }

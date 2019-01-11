@@ -7,7 +7,8 @@ class ShowHoldHold extends React.Component
     super(props);
 
     this.state={
-      allshows:{}
+      allshows:{},
+      language:"native"
     };
 
     //rendering order for show types
@@ -16,9 +17,9 @@ class ShowHoldHold extends React.Component
 
   //public, recieve a show data object and load it
   //show object should be full TypeSortedShowsOutput object from processing function
-  loadShowData(data)
+  loadShowData(data,language)
   {
-    this.setState({allshows:data});
+    this.setState({allshows:data,language:language});
   }
 
   render()
@@ -29,7 +30,7 @@ class ShowHoldHold extends React.Component
     {
       if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
-        res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x}/>);
+        res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x} language={this.state.language}/>);
       }
     }
 
@@ -40,9 +41,10 @@ class ShowHoldHold extends React.Component
 }
 
 /*show holder element. holds shows.
-  ShowHold(Show-array shows, string name)
+  ShowHold(Show-array shows, string name, string language)
   shows: array of shows
-  name: name/type of shows of this group*/
+  name: name/type of shows of this group
+  language: language string to use*/
 class ShowHold extends React.Component
 {
   render()
@@ -53,7 +55,7 @@ class ShowHold extends React.Component
 
         <div className="actual-shows">
           {this.props.shows.map((x,i)=>{
-            return <Show data={x} key={i} language="native"/>;
+            return <Show data={x} key={i} language={this.props.language}/>;
           })}
         </div>
       </div>

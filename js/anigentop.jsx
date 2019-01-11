@@ -11,10 +11,10 @@ class AniGenTop extends React.Component
   }
 
   //public passdown, perform api query and show render
-  renderShows(username,season,year)
+  renderShows(username,season,year,language)
   {
     anilistUserQuery(username,(data)=>{
-      this.showHoldHold.current.loadShowData(processAnlistDataShowType(data,season,year));
+      this.showHoldHold.current.loadShowData(processAnlistDataShowType(data,season,year),language);
     });
   }
 
