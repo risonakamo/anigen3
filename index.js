@@ -42,6 +42,7 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
     var shows;
     var show;
     var type;
+    var seenTitles=new Set(); //dont take duplicates
 
     //over all lists
     for (var x=0,l=data.length;x<l;x++)
@@ -53,8 +54,9 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
         {
             show=shows[y].media;
 
-            if (show.season==season && show.startDate.year==year)
+            if (show.season==season && show.startDate.year==year && !seenTitles.has(show.title.romaji))
             {
+                seenTitles.add(show.title.romaji);
                 type=show.format;
 
                 //merge some types into the "special" category
