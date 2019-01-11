@@ -30,7 +30,9 @@ class ShowHoldHold extends React.Component
     {
       if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
-        res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]} name={x} key={x} language={this.state.language}/>);
+        res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]}
+          name={x} key={x} language={this.state.language}/>
+        );
       }
     }
 

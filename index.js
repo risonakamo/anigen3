@@ -40,6 +40,7 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
     var res={};
     var shows;
     var show;
+    var type;
 
     //over all lists
     for (var x=0,l=data.length;x<l;x++)
@@ -53,14 +54,22 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
 
             if (show.season==season && show.startDate.year==year)
             {
-                if (res[show.format])
+                type=show.format;
+
+                //merge some types into the "special" category
+                if (type=="OVA" || type=="ONA" || type=="MOVIE")
                 {
-                    res[show.format].push(show);
+                    type="SPECIAL";
+                }
+
+                if (res[type])
+                {
+                    res[type].push(show);
                 }
 
                 else
                 {
-                    res[show.format]=[show];
+                    res[type]=[show];
                 }
             }
         }
