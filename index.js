@@ -3,6 +3,7 @@ window.onload=main;
 function main()
 {
     ReactDOM.render(React.createElement(AniGenTop),document.querySelector(".menubar"));
+    randomiseColourTheme();
 }
 
 //make a media list request to anilist using a constructed query.
@@ -116,4 +117,19 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
     }
 
     return res;
+}
+
+//randomise the colour theme of the page.
+function randomiseColourTheme()
+{
+    //careful!!!! requires index.css have the "html" rule be the 4th rule in the file.
+    //and the html rule must look like below, because this function sets the rule to
+    //what is displayed below
+    document.styleSheets[0].rules[3].style.cssText=`height: 100%; --main-colour: #${new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex()};`;
+}
+
+//random integre
+function randint(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1))+min;
 }
