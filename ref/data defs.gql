@@ -41,8 +41,8 @@ type localStorage
 {
     anigen3:{
         username:string,
-        season:string,
+        season:[int,string], #[season index, season string]
         year:string,
-        lang:string
+        lang:[int,string] #[lang index, lang string]
     }
 }
