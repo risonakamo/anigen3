@@ -59,7 +59,7 @@ class ShowHoldHold extends React.Component
       if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
         res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]}
-          name={x} key={x} language={this.state.language} removeShow={this.removeShow}/>
+          name={this.defaultTypeSortOrder[x]} key={x} language={this.state.language} removeShow={this.removeShow}/>
         );
       }
     }
@@ -82,6 +82,7 @@ class ShowHold extends React.Component
   {
     return (
       <div className="show-holder">
+        <div className="holder-type">{this.props.name}</div>
         <div className="bracket"></div>
 
         <div className="actual-shows">
