@@ -57,9 +57,18 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
                 type=show.format;
 
                 //merge some types into the "special" category
+                //do this weird thing because we still want the data's type
+                //field to stay the same
                 if (type=="OVA" || type=="ONA" || type=="MOVIE")
                 {
                     type="SPECIAL";
+                }
+
+                //change TV_SHORT to SHORT, permanently in data also
+                else if (type=="TV_SHORT")
+                {
+                    type="SHORT";
+                    show.format="SHORT";
                 }
 
                 if (res[type])
@@ -74,6 +83,8 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
             }
         }
     }
+
+    console.log(res);
 
     //over all filtered shows
     for (var x in res)

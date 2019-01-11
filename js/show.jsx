@@ -12,7 +12,7 @@ class ShowHoldHold extends React.Component
     };
 
     //rendering order for show types
-    this.defaultTypeSortOrder=["TV","TV_SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
+    this.defaultTypeSortOrder=["TV","SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
   }
 
   //public, recieve a show data object and load it
@@ -96,13 +96,6 @@ class Show extends React.Component
       }
     }
 
-    //quick edit to show type string
-    var type=this.props.data.format;
-    if (type=="TV_SHORT")
-    {
-      type="SHORT";
-    }
-
     return (
       <div className="show">
         <img src={this.props.data.coverImage.large}/>
@@ -110,7 +103,7 @@ class Show extends React.Component
         <p className="title"><a href={this.props.data.siteUrl} target="_blank">{language}</a></p>
 
         <div className="tags">
-          <span className="type">{type}</span>
+          <span className="type">{this.props.data.format}</span>
           {this.props.data.genres.map((x,i)=>{
             return <span key={i}>{x}</span>;
           })}

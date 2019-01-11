@@ -5,7 +5,7 @@ class ShowHoldHold extends React.Component {
       allshows: {},
       language: "native"
     };
-    this.defaultTypeSortOrder = ["TV", "TV_SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
+    this.defaultTypeSortOrder = ["TV", "SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
   }
 
   loadShowData(data, language) {
@@ -71,12 +71,6 @@ class Show extends React.Component {
       }
     }
 
-    var type = this.props.data.format;
-
-    if (type == "TV_SHORT") {
-      type = "SHORT";
-    }
-
     return React.createElement("div", {
       className: "show"
     }, React.createElement("img", {
@@ -90,7 +84,7 @@ class Show extends React.Component {
       className: "tags"
     }, React.createElement("span", {
       className: "type"
-    }, type), this.props.data.genres.map((x, i) => {
+    }, this.props.data.format), this.props.data.genres.map((x, i) => {
       return React.createElement("span", {
         key: i
       }, x);
