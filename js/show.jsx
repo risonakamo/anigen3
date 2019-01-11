@@ -9,7 +9,9 @@ class ShowHoldHold extends React.Component
 
     this.state={
       allshows:{},
-      language:"native"
+      language:"native",
+      year:"",
+      season:""
     };
 
     //rendering order for show types
@@ -19,9 +21,10 @@ class ShowHoldHold extends React.Component
 
   //public, recieve a show data object and load it
   //show object should be full TypeSortedShowsOutput object from processing function
-  loadShowData(data,language)
+  //language is probably required, year/season are for displaying in the top label
+  loadShowData(data,language,year,season)
   {
-    this.setState({allshows:data,language:language});
+    this.setState({allshows:data,language,year,season});
     this.parentContainer.scrollTo(0,0);
   }
 
@@ -65,7 +68,7 @@ class ShowHoldHold extends React.Component
     }
 
     return <>
-      <h1><span>冬</span>2019アニメ</h1>
+      <h1><span>{this.state.season}</span>{this.state.year}アニメ</h1>
       {res}
     </>;
   }

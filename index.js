@@ -133,3 +133,23 @@ function randint(min,max)
 {
     return Math.floor(Math.random()*(max-min+1))+min;
 }
+
+function seasonConvert(seasonstring)
+{
+    switch (seasonstring)
+    {
+        case "SUMMER":
+        return "夏";
+
+        case "SPRING":
+        return "春";
+
+        case "FALL":
+        return "秋";
+
+        case "WINTER":
+        return "冬";
+    }
+
+    return "？";
+}

@@ -7,7 +7,7 @@ class AniGenTop extends React.Component {
 
   renderShows(username, season, year, language) {
     anilistUserQuery(username, data => {
-      this.showHoldHold.current.loadShowData(processAnlistDataShowType(data, season, year), language);
+      this.showHoldHold.current.loadShowData(processAnlistDataShowType(data, season, year), language, year, seasonConvert(season));
     });
   }
 

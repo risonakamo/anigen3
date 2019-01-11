@@ -4,16 +4,20 @@ class ShowHoldHold extends React.Component {
     this.removeShow = this.removeShow.bind(this);
     this.state = {
       allshows: {},
-      language: "native"
+      language: "native",
+      year: "",
+      season: ""
     };
     this.defaultTypeSortOrder = ["TV", "SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
     this.parentContainer = document.querySelector(".show-holder-holders");
   }
 
-  loadShowData(data, language) {
+  loadShowData(data, language, year, season) {
     this.setState({
       allshows: data,
-      language: language
+      language,
+      year,
+      season
     });
     this.parentContainer.scrollTo(0, 0);
   }
@@ -50,7 +54,7 @@ class ShowHoldHold extends React.Component {
       }
     }
 
-    return React.createElement(React.Fragment, null, React.createElement("h1", null, React.createElement("span", null, "\u51AC"), "2019\u30A2\u30CB\u30E1"), res);
+    return React.createElement(React.Fragment, null, React.createElement("h1", null, React.createElement("span", null, this.state.season), this.state.year, "\u30A2\u30CB\u30E1"), res);
   }
 
 }
