@@ -1,6 +1,7 @@
 class ShowHoldHold extends React.Component {
   constructor(props) {
     super(props);
+    this.removeShow = this.removeShow.bind(this);
     this.state = {
       allshows: {},
       language: "native"
@@ -15,6 +16,25 @@ class ShowHoldHold extends React.Component {
     });
   }
 
+  removeShow(type, title) {
+    if (type == "OVA" || type == "ONA" || type == "MOVIE") {
+      type = "SPECIAL";
+    }
+
+    var shows = this.state.allshows[type];
+    shows.splice(shows.findIndex(x => {
+      return x.title.romaji == title;
+    }), 1);
+
+    if (!shows.length) {
+      delete this.state.allshows[type];
+    }
+
+    this.setState({
+      allshows: this.state.allshows
+    });
+  }
+
   render() {
     var res = [];
 
@@ -24,7 +44,8 @@ class ShowHoldHold extends React.Component {
           shows: this.state.allshows[this.defaultTypeSortOrder[x]],
           name: x,
           key: x,
-          language: this.state.language
+          language: this.state.language,
+          removeShow: this.removeShow
         }));
       }
     }
@@ -46,7 +67,8 @@ class ShowHold extends React.Component {
       return React.createElement(Show, {
         data: x,
         key: i,
-        language: this.props.language
+        language: this.props.language,
+        removeShow: this.props.removeShow
       });
     })));
   }
@@ -91,7 +113,10 @@ class Show extends React.Component {
     })), React.createElement("p", {
       className: "date"
     }, date), React.createElement("div", {
-      className: "control-link"
+      className: "control-link",
+      onClick: () => {
+        this.props.removeShow(this.props.data.format, this.props.data.title.romaji);
+      }
     }, "remove"));
   }
 

@@ -5,6 +5,7 @@ class ShowHoldHold extends React.Component
   constructor(props)
   {
     super(props);
+    this.removeShow=this.removeShow.bind(this);
 
     this.state={
       allshows:{},
@@ -22,6 +23,31 @@ class ShowHoldHold extends React.Component
     this.setState({allshows:data,language:language});
   }
 
+  //public passdown, remove a show given the type and title
+  removeShow(type,title)
+  {
+    //handle types that have been merged with SPECIAL type. merges should be
+    //identical to merges in processanilistdatashowtype() in index.js
+    if (type=="OVA" || type=="ONA" || type=="MOVIE")
+    {
+      type="SPECIAL";
+    }
+
+    var shows=this.state.allshows[type];
+
+    //find the show to be deleted in the correct allshow type array, and remove it
+    shows.splice(shows.findIndex((x)=>{return x.title.romaji==title}),1);
+
+    //if that type array is now empty, remove that type completely
+    if (!shows.length)
+    {
+      delete this.state.allshows[type];
+    }
+
+    //rerender
+    this.setState({allshows:this.state.allshows});
+  }
+
   render()
   {
     var res=[];
@@ -31,7 +57,7 @@ class ShowHoldHold extends React.Component
       if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
         res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]}
-          name={x} key={x} language={this.state.language}/>
+          name={x} key={x} language={this.state.language} removeShow={this.removeShow}/>
         );
       }
     }
@@ -43,10 +69,11 @@ class ShowHoldHold extends React.Component
 }
 
 /*show holder element. holds shows.
-  ShowHold(Show-array shows, string name, string language)
+  ShowHold(Show-array shows, string name, string language, parent-function removeShow)
   shows: array of shows
   name: name/type of shows of this group
-  language: language string to use*/
+  language: language string to use
+  removeShow: function from ShowHoldHold*/
 class ShowHold extends React.Component
 {
   render()
@@ -57,7 +84,7 @@ class ShowHold extends React.Component
 
         <div className="actual-shows">
           {this.props.shows.map((x,i)=>{
-            return <Show data={x} key={i} language={this.props.language}/>;
+            return <Show data={x} key={i} language={this.props.language} removeShow={this.props.removeShow}/>;
           })}
         </div>
       </div>
@@ -66,11 +93,12 @@ class ShowHold extends React.Component
 }
 
 /*a Show element.
-  Show(Show data, string-enum language)
+  Show(Show data, string-enum language, parent-function removeShow)
   data: full Show data object, see in data defs.gql
   language: string for choosing language.
             usually something like: "native","romaji","english".
-            does defaulting if missing.*/
+            does defaulting if missing.
+  removeShow: function from ShowHold*/
 class Show extends React.Component
 {
   render()
@@ -111,7 +139,11 @@ class Show extends React.Component
 
         <p className="date">{date}</p>
 
-        <div className="control-link">remove</div>
+        <div className="control-link" onClick={()=>{
+          this.props.removeShow(this.props.data.format,this.props.data.title.romaji);
+        }}>
+          remove
+        </div>
       </div>
     );
   }
