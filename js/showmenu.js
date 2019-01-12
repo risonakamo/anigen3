@@ -73,7 +73,14 @@ class ShowMenu extends React.Component {
     }, "\u5E74"), React.createElement("input", {
       type: "number",
       className: "white-textbox",
-      ref: this.menuFields.year
+      ref: this.menuFields.year,
+      onWheel: e => {
+        if (e.deltaY < 0) {
+          e.currentTarget.value = parseInt(e.currentTarget.value) + 1;
+        } else {
+          e.currentTarget.value = parseInt(e.currentTarget.value) - 1;
+        }
+      }
     })), React.createElement("div", {
       className: "menu-block"
     }, React.createElement(WhiteMultiSelect, {

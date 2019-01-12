@@ -88,7 +88,19 @@ class ShowMenu extends React.Component
 
       <div className="menu-block">
         <div className="left-text">年</div>
-        <input type="number" className="white-textbox" ref={this.menuFields.year}/>
+        <input type="number" className="white-textbox" ref={this.menuFields.year}
+          onWheel={(e)=>{
+            if (e.deltaY<0)
+            {
+              e.currentTarget.value=parseInt(e.currentTarget.value)+1;
+            }
+
+            else
+            {
+              e.currentTarget.value=parseInt(e.currentTarget.value)-1;
+            }
+          }}
+        />
       </div>
 
       <div className="menu-block">
