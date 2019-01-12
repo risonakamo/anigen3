@@ -68,8 +68,10 @@ class ShowHoldHold extends React.Component
     }
 
     return <>
-      <h1><span>{this.state.season}</span>{this.state.year}アニメ</h1>
-      {res}
+      <div className="show-hold-middle">
+        <h1 className="chart-title"><span>{this.state.season}</span>{this.state.year}アニメ</h1>
+        {res}
+      </div>
     </>;
   }
 }

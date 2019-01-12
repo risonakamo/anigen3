@@ -25,7 +25,6 @@
     font-weight: 600;
 }
 
-//should be 4th rule, modified by randomiseColourTheme() index.js
 html
 {
     height: 100%;
@@ -76,7 +75,8 @@ a
     flex: 1;
     overflow: auto;
 
-    &>h1
+    //top title thing
+    .chart-title
     {
         font-size: 30px;
         font-weight: 600;
@@ -87,6 +87,12 @@ a
         {
             color: @main-yellow;
         }
+    }
+
+    //container so screenshot works
+    .show-hold-middle
+    {
+        background-color: var(--main-colour);
     }
 }
 
@@ -101,7 +107,6 @@ a
 {
     display: flex;
     padding: 20px 0 20px 0;
-    background-color: var(--main-colour);
 
     .holder-type
     {

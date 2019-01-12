@@ -124,10 +124,13 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
 //randomise the colour theme of the page.
 function randomiseColourTheme()
 {
+    //(no longer applicable)
     //careful!!!! requires index.css have the "html" rule be the 4th rule in the file.
     //and the html rule must look like below, because this function sets the rule to
     //what is displayed below
-    document.styleSheets[0].rules[3].style.cssText=`height: 100%; --main-colour: #${new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex()};`;
+    // document.styleSheets[0].rules[3].style.cssText=`height: 100%; --main-colour: #${new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex()};`;
+
+    document.body.style=`--main-colour:#${new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex()}`;
 }
 
 //random integre
@@ -136,6 +139,7 @@ function randint(min,max)
     return Math.floor(Math.random()*(max-min+1))+min;
 }
 
+//convert a data string into visual
 function seasonConvert(seasonstring)
 {
     switch (seasonstring)
@@ -154,4 +158,12 @@ function seasonConvert(seasonstring)
     }
 
     return "？";
+}
+
+//debug test produce a screenshot
+function testScreenshot()
+{
+    html2canvas(document.querySelector(".show-hold-middle"),{allowTaint:true}).then((canvas)=>{
+        document.querySelector(".menubar").appendChild(canvas);
+    });
 }

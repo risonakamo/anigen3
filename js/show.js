@@ -54,7 +54,11 @@ class ShowHoldHold extends React.Component {
       }
     }
 
-    return React.createElement(React.Fragment, null, React.createElement("h1", null, React.createElement("span", null, this.state.season), this.state.year, "\u30A2\u30CB\u30E1"), res);
+    return React.createElement(React.Fragment, null, React.createElement("div", {
+      className: "show-hold-middle"
+    }, React.createElement("h1", {
+      className: "chart-title"
+    }, React.createElement("span", null, this.state.season), this.state.year, "\u30A2\u30CB\u30E1"), res));
   }
 
 }
