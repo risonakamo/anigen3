@@ -2,12 +2,14 @@ class ShowMenu extends React.Component {
   constructor(props) {
     super(props);
     this.renderShowCall = this.renderShowCall.bind(this);
+    this.toggleMenuMode = this.toggleMenuMode.bind(this);
     this.menuFields = {
       username: React.createRef(),
       season: React.createRef(),
       year: React.createRef(),
       lang: React.createRef()
     };
+    this.menuModes = [React.createRef(), React.createRef()];
   }
 
   componentDidMount() {
@@ -53,6 +55,11 @@ class ShowMenu extends React.Component {
     this.props.setHoldWidth(e.currentTarget.value);
   }
 
+  toggleMenuMode() {
+    this.menuModes[0].current.classList.toggle("inactive");
+    this.menuModes[1].current.classList.toggle("inactive");
+  }
+
   render() {
     return React.createElement(React.Fragment, null, React.createElement("div", {
       className: "menu-block"
@@ -60,6 +67,8 @@ class ShowMenu extends React.Component {
       className: "logo",
       src: "img/ag-logo.png"
     })), React.createElement("div", {
+      ref: this.menuModes[0]
+    }, React.createElement("div", {
       className: "menu-block"
     }, React.createElement("div", {
       className: "left-text"
@@ -106,8 +115,12 @@ class ShowMenu extends React.Component {
     }, React.createElement("div", {
       className: "left-text"
     }), React.createElement("div", {
-      className: "white-button thin"
-    }, "\u753B\u50CF\u4FDD\u5B58\u2026")), React.createElement("div", {
+      className: "white-button thin",
+      onClick: this.toggleMenuMode
+    }, "\u753B\u50CF\u4FDD\u5B58\u2026"))), React.createElement("div", {
+      className: "inactive",
+      ref: this.menuModes[1]
+    }, React.createElement("div", {
       className: "menu-block"
     }, React.createElement("div", {
       className: "left-text"
@@ -132,8 +145,9 @@ class ShowMenu extends React.Component {
     }, React.createElement("div", {
       className: "left-text"
     }), React.createElement("div", {
-      className: "white-button thin"
-    }, "\u623B\u308B")));
+      className: "white-button thin",
+      onClick: this.toggleMenuMode
+    }, "\u623B\u308B"))));
   }
 
 }

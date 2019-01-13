@@ -8,6 +8,7 @@ class ShowMenu extends React.Component
   {
     super(props);
     this.renderShowCall=this.renderShowCall.bind(this);
+    this.toggleMenuMode=this.toggleMenuMode.bind(this);
 
     //menu field refs
     this.menuFields={
@@ -16,8 +17,11 @@ class ShowMenu extends React.Component
       year:React.createRef(),
       lang:React.createRef()
     };
+
+    this.menuModes=[React.createRef(),React.createRef()]; //the 2 menu divs
   }
 
+  //upon render, load last saved settings, if available
   componentDidMount()
   {
     this.loadLocalStorage();
@@ -34,6 +38,7 @@ class ShowMenu extends React.Component
       return;
     }
 
+    //the different menu elements
     var menuOptions={
       username:this.menuFields.username.current.value,
       season:this.menuFields.season.current.getValue(),
@@ -84,66 +89,78 @@ class ShowMenu extends React.Component
     this.props.setHoldWidth(e.currentTarget.value);
   }
 
+  //toggle the menu mode. 4head.
+  //instead of re rendering decided to do it the old fashioned way
+  //for speed.
+  toggleMenuMode()
+  {
+    this.menuModes[0].current.classList.toggle("inactive");
+    this.menuModes[1].current.classList.toggle("inactive");
+  }
+
   render()
   {
     return <>
       <div className="menu-block"><img className="logo" src="img/ag-logo.png"/></div>
+      <div ref={this.menuModes[0]}>
+        <div className="menu-block">
+          <div className="left-text">Anilist ID</div>
+          <input type="text" className="white-textbox" ref={this.menuFields.username}/>
+        </div>
 
-      <div className="menu-block">
-        <div className="left-text">Anilist ID</div>
-        <input type="text" className="white-textbox" ref={this.menuFields.username}/>
+        <div className="menu-block">
+          <WhiteMultiSelect title="季節" actualChoices={["春","夏","秋","冬"]}
+            choices={["SPRING","SUMMER","FALL","WINTER"]} ref={this.menuFields.season}
+          />
+        </div>
+
+        <div className="menu-block">
+          <div className="left-text">年</div>
+          <input type="number" className="white-textbox" ref={this.menuFields.year}
+            onWheel={(e)=>{wheelIncrement(e,1)}}
+          />
+        </div>
+
+        <div className="menu-block">
+          <WhiteMultiSelect title="言語" actualChoices={["日本語","英語","実際英語"]}
+            choices={["native","romaji","english"]} customClasses="pill multi-line-wide"
+            leftTextClass="top" ref={this.menuFields.lang}
+          />
+        </div>
+
+        <div className="menu-block">
+          <div className="left-text"></div>
+          <div className="white-button green" onClick={this.renderShowCall}>完了</div>
+        </div>
+
+        <div className="menu-block no-top">
+          <div className="left-text"></div>
+          <div className="white-button thin" onClick={this.toggleMenuMode}>画像保存…</div>
+        </div>
       </div>
 
-      <div className="menu-block">
-        <WhiteMultiSelect title="季節" actualChoices={["春","夏","秋","冬"]}
-          choices={["SPRING","SUMMER","FALL","WINTER"]} ref={this.menuFields.season}
-        />
-      </div>
+      <div className="inactive" ref={this.menuModes[1]}>
+        <div className="menu-block">
+          <div className="left-text"></div>
+          <input type="number" className="white-textbox smaller"
+            onWheel={(e)=>{
+              wheelIncrement(e,100);
+              this.setWidthWrapper(e);
+            }}
 
-      <div className="menu-block">
-        <div className="left-text">年</div>
-        <input type="number" className="white-textbox" ref={this.menuFields.year}
-          onWheel={(e)=>{wheelIncrement(e,1)}}
-        />
-      </div>
+            onChange={(e)=>{this.props.setHoldWidth(e.currentTarget.value)}}
+          />
+          <span className="right-text">px</span>
+        </div>
 
-      <div className="menu-block">
-        <WhiteMultiSelect title="言語" actualChoices={["日本語","英語","実際英語"]}
-          choices={["native","romaji","english"]} customClasses="pill multi-line-wide"
-          leftTextClass="top" ref={this.menuFields.lang}
-        />
-      </div>
+        <div className="menu-block">
+          <div className="img-out"></div>
+        </div>
 
-      <div className="menu-block">
-        <div className="left-text"></div>
-        <div className="white-button green" onClick={this.renderShowCall}>完了</div>
-      </div>
-
-      <div className="menu-block no-top">
-        <div className="left-text"></div>
-        <div className="white-button thin">画像保存…</div>
-      </div>
-
-      <div className="menu-block">
-        <div className="left-text"></div>
-        <input type="number" className="white-textbox smaller"
-          onWheel={(e)=>{
-            wheelIncrement(e,100);
-            this.setWidthWrapper(e);
-          }}
-
-          onChange={(e)=>{this.props.setHoldWidth(e.currentTarget.value)}}
-        />
-        <span className="right-text">px</span>
-      </div>
-
-      <div className="menu-block">
-        <div className="img-out"></div>
-      </div>
-
-      <div className="menu-block no-top">
-        <div className="left-text"></div>
-        <div className="white-button thin">戻る</div>
+        <div className="menu-block no-top">
+          <div className="left-text"></div>
+          <div className="white-button thin" onClick={this.toggleMenuMode}>戻る</div>
+        </div>
       </div>
     </>;
   }

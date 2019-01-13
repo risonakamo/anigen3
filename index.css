@@ -70,6 +70,9 @@ a:hover {
 .menubar {
   width: 320px;
 }
+.menubar .inactive {
+  display: none;
+}
 .show-holder {
   display: flex;
   padding: 20px 0 20px 0;
