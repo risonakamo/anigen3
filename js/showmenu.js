@@ -75,11 +75,7 @@ class ShowMenu extends React.Component {
       className: "white-textbox",
       ref: this.menuFields.year,
       onWheel: e => {
-        if (e.deltaY < 0) {
-          e.currentTarget.value = parseInt(e.currentTarget.value) + 1;
-        } else {
-          e.currentTarget.value = parseInt(e.currentTarget.value) - 1;
-        }
+        wheelIncrement(e, 1);
       }
     })), React.createElement("div", {
       className: "menu-block"
@@ -97,7 +93,29 @@ class ShowMenu extends React.Component {
     }), React.createElement("div", {
       className: "white-button green",
       onClick: this.renderShowCall
-    }, "\u5B8C\u4E86")));
+    }, "\u5B8C\u4E86")), React.createElement("div", {
+      className: "menu-block no-top"
+    }, React.createElement("div", {
+      className: "left-text"
+    }), React.createElement("div", {
+      className: "white-button thin"
+    }, "\u753B\u50CF\u4FDD\u5B58\u2026")), React.createElement("div", {
+      className: "menu-block"
+    }, React.createElement("div", {
+      className: "left-text"
+    }), React.createElement("input", {
+      type: "number",
+      className: "white-textbox smaller",
+      onWheel: e => {
+        wheelIncrement(e, 100);
+      }
+    }), React.createElement("span", {
+      className: "right-text"
+    }, "px")), React.createElement("div", {
+      className: "menu-block"
+    }, React.createElement("div", {
+      className: "img-out"
+    })));
   }
 
 }

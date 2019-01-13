@@ -152,8 +152,15 @@ a:hover {
 .menu-block .left-text.top {
   vertical-align: top;
 }
+.menu-block span.right-text {
+  font-size: 18px;
+  margin-left: 10px;
+}
 .menu-block.double-top {
   padding-top: 20px;
+}
+.menu-block.no-top {
+  padding-top: 0;
 }
 .menu-block img.logo {
   display: block;
@@ -167,6 +174,9 @@ a:hover {
   border-radius: 4px;
   font-size: 20px;
   color: var(--main-colour);
+}
+.white-textbox.smaller {
+  width: 90px;
 }
 .white-multiselect {
   display: inline-block;
@@ -197,9 +207,12 @@ a:hover {
   border-radius: 30px;
 }
 .white-button {
-  display: inline;
-  padding: 8px 54px 9px 54px;
+  display: inline-block;
+  width: 140px;
+  padding: 5px 0 5px 0;
   border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
   background-color: white;
   font-size: 16px;
   color: var(--main-colour);
@@ -211,4 +224,14 @@ a:hover {
 }
 .white-button.green {
   background-color: #1affaf;
+  color: white;
+}
+.white-button.thin {
+  padding: 0;
+}
+.img-out {
+  width: 175px;
+  height: 175px;
+  border: 4px dotted white;
+  margin: auto;
 }

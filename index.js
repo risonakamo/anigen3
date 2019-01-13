@@ -167,3 +167,25 @@ function testScreenshot()
         document.querySelector(".menubar").appendChild(canvas);
     });
 }
+
+//mouse wheel event handler for use with number boxes. increment the number
+//box by a certain number
+function wheelIncrement(e,inc=1)
+{
+    e.preventDefault();
+
+    if (!e.currentTarget.value)
+    {
+        e.currentTarget.value=0;
+    }
+
+    if (e.deltaY<0)
+    {
+      e.currentTarget.value=parseInt(e.currentTarget.value)+inc;
+    }
+
+    else
+    {
+      e.currentTarget.value=parseInt(e.currentTarget.value)-inc;
+    }
+}

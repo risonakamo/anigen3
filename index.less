@@ -230,10 +230,21 @@ a
         }
     }
 
+    span.right-text
+    {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
     //for larger top margin
     &.double-top
     {
         padding-top: 20px;
+    }
+
+    &.no-top
+    {
+        padding-top: 0;
     }
 
     //for the image in a menublock being used as the top logo
@@ -254,6 +265,11 @@ a
     border-radius: 4px;
     font-size: 20px;
     color: var(--main-colour);
+
+    &.smaller
+    {
+        width: 90px;
+    }
 }
 
 //a multi select element
@@ -307,9 +323,12 @@ a
 //a menu button
 .white-button
 {
-    display: inline;
-    padding: 8px 54px 9px 54px;
+    display: inline-block;
+    width: 140px;
+    padding: 5px 0 5px 0;
     border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
     background-color: white;
     font-size: 16px;
     color: var(--main-colour);
@@ -324,5 +343,20 @@ a
     &.green
     {
         background-color: @confirm-green;
+        color: white;
     }
+
+    &.thin
+    {
+        padding: 0;
+    }
+}
+
+//image output div
+.img-out
+{
+    width: 175px;
+    height: 175px;
+    border: 4px dotted white;
+    margin: auto;
 }

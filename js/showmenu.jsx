@@ -89,17 +89,7 @@ class ShowMenu extends React.Component
       <div className="menu-block">
         <div className="left-text">年</div>
         <input type="number" className="white-textbox" ref={this.menuFields.year}
-          onWheel={(e)=>{
-            if (e.deltaY<0)
-            {
-              e.currentTarget.value=parseInt(e.currentTarget.value)+1;
-            }
-
-            else
-            {
-              e.currentTarget.value=parseInt(e.currentTarget.value)-1;
-            }
-          }}
+          onWheel={(e)=>{wheelIncrement(e,1)}}
         />
       </div>
 
@@ -113,6 +103,21 @@ class ShowMenu extends React.Component
       <div className="menu-block">
         <div className="left-text"></div>
         <div className="white-button green" onClick={this.renderShowCall}>完了</div>
+      </div>
+
+      <div className="menu-block no-top">
+        <div className="left-text"></div>
+        <div className="white-button thin">画像保存…</div>
+      </div>
+
+      <div className="menu-block">
+        <div className="left-text"></div>
+        <input type="number" className="white-textbox smaller" onWheel={(e)=>{wheelIncrement(e,100)}}/>
+        <span className="right-text">px</span>
+      </div>
+
+      <div className="menu-block">
+        <div className="img-out"></div>
       </div>
     </>;
   }
