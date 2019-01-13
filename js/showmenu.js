@@ -52,12 +52,13 @@ class ShowMenu extends React.Component {
       e.currentTarget.value = 1000;
     }
 
-    this.props.setHoldWidth(e.currentTarget.value);
+    this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value);
   }
 
   toggleMenuMode() {
     this.menuModes[0].current.classList.toggle("inactive");
     this.menuModes[1].current.classList.toggle("inactive");
+    this.props.showHoldHold.current.toggleRemovable();
   }
 
   render() {
@@ -132,7 +133,7 @@ class ShowMenu extends React.Component {
         this.setWidthWrapper(e);
       },
       onChange: e => {
-        this.props.setHoldWidth(e.currentTarget.value);
+        this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value);
       }
     }), React.createElement("span", {
       className: "right-text"

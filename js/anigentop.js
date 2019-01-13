@@ -21,7 +21,7 @@ class AniGenTop extends React.Component {
   render() {
     return React.createElement(React.Fragment, null, React.createElement(ShowMenu, {
       renderShows: this.renderShows,
-      setHoldWidth: this.setHoldWidth
+      showHoldHold: this.showHoldHold
     }), ReactDOM.createPortal(React.createElement(ShowHoldHold, {
       ref: this.showHoldHold
     }), document.querySelector(".show-holder-holders")));

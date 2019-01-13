@@ -33,7 +33,7 @@ class AniGenTop extends React.Component
   render()
   {
     return <>
-      <ShowMenu renderShows={this.renderShows} setHoldWidth={this.setHoldWidth}/>
+      <ShowMenu renderShows={this.renderShows} showHoldHold={this.showHoldHold}/>
 
       {ReactDOM.createPortal(<ShowHoldHold ref={this.showHoldHold}/>,document.querySelector(".show-holder-holders"))}
     </>;

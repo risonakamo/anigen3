@@ -65,7 +65,7 @@ class ShowHoldHold extends React.Component
   //public, toggle removeable mode of show elements
   toggleRemovable()
   {
-    this.setState({removeDisabled:this.state.removeDisabled?1:0});
+    this.setState({removeDisabled:this.state.removeDisabled?0:1});
   }
 
   //public, change show hold width size

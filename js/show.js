@@ -46,7 +46,7 @@ class ShowHoldHold extends React.Component {
 
   toggleRemovable() {
     this.setState({
-      removeDisabled: this.state.removeDisabled ? 1 : 0
+      removeDisabled: this.state.removeDisabled ? 0 : 1
     });
   }
 

@@ -1,7 +1,7 @@
 /*menu element.
-  ShowMenu(parent-function renderShows,parent-function setHoldWidth)
+  ShowMenu(parent-function renderShows, ShowHoldHold-ref showHoldHold)
   renderShows: function from parent AniGenTop
-  setHoldWidth: function from parent AniGenTop*/
+  showHoldHold: the showHoldHold REF object, passed down from parent*/
 class ShowMenu extends React.Component
 {
   constructor(props)
@@ -86,7 +86,7 @@ class ShowMenu extends React.Component
       e.currentTarget.value=1000;
     }
 
-    this.props.setHoldWidth(e.currentTarget.value);
+    this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value);
   }
 
   //toggle the menu mode. 4head.
@@ -96,6 +96,7 @@ class ShowMenu extends React.Component
   {
     this.menuModes[0].current.classList.toggle("inactive");
     this.menuModes[1].current.classList.toggle("inactive");
+    this.props.showHoldHold.current.toggleRemovable();
   }
 
   render()
@@ -148,7 +149,7 @@ class ShowMenu extends React.Component
               this.setWidthWrapper(e);
             }}
 
-            onChange={(e)=>{this.props.setHoldWidth(e.currentTarget.value)}}
+            onChange={(e)=>{this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value)}}
           />
           <span className="right-text">px</span>
         </div>
