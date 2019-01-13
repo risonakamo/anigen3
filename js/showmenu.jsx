@@ -140,6 +140,11 @@ class ShowMenu extends React.Component
       <div className="menu-block">
         <div className="img-out"></div>
       </div>
+
+      <div className="menu-block no-top">
+        <div className="left-text"></div>
+        <div className="white-button thin">戻る</div>
+      </div>
     </>;
   }
 }

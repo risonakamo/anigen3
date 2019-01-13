@@ -127,7 +127,13 @@ class ShowMenu extends React.Component {
       className: "menu-block"
     }, React.createElement("div", {
       className: "img-out"
-    })));
+    })), React.createElement("div", {
+      className: "menu-block no-top"
+    }, React.createElement("div", {
+      className: "left-text"
+    }), React.createElement("div", {
+      className: "white-button thin"
+    }, "\u623B\u308B")));
   }
 
 }
