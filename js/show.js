@@ -12,14 +12,17 @@ class ShowHoldHold extends React.Component {
     this.parentContainer = document.querySelector(".show-holder-holders");
   }
 
-  loadShowData(data, language, year, season) {
+  loadShowData(data, language, year, season, dontscroll) {
     this.setState({
       allshows: data,
       language,
       year,
       season
     });
-    this.parentContainer.scrollTo(0, 0);
+
+    if (!dontscroll) {
+      this.parentContainer.scrollTo(0, 0);
+    }
   }
 
   removeShow(type, title) {
@@ -36,7 +39,7 @@ class ShowHoldHold extends React.Component {
       delete this.state.allshows[type];
     }
 
-    this.loadShowData(this.state.allshows, this.state.language);
+    this.loadShowData(this.state.allshows, this.state.language, this.state.year, this.state.season, 1);
   }
 
   render() {

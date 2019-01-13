@@ -21,11 +21,16 @@ class ShowHoldHold extends React.Component
 
   //public, recieve a show data object and load it
   //show object should be full TypeSortedShowsOutput object from processing function
-  //language is probably required, year/season are for displaying in the top label
-  loadShowData(data,language,year,season)
+  //language is probably required, year/season are for displaying in the top label.
+  //give dont scroll=1 to not scroll up to top
+  loadShowData(data,language,year,season,dontscroll)
   {
     this.setState({allshows:data,language,year,season});
-    this.parentContainer.scrollTo(0,0);
+
+    if (!dontscroll)
+    {
+      this.parentContainer.scrollTo(0,0);
+    }
   }
 
   //public passdown, remove a show given the type and title
@@ -50,7 +55,7 @@ class ShowHoldHold extends React.Component
     }
 
     //rerender
-    this.loadShowData(this.state.allshows,this.state.language);
+    this.loadShowData(this.state.allshows,this.state.language,this.state.year,this.state.season,1);
   }
 
   render()
