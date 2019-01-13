@@ -11,7 +11,9 @@ class ShowHoldHold extends React.Component
       allshows:{},
       language:"native",
       year:"",
-      season:""
+      season:"",
+
+      removeDisabled:0
     };
 
     //rendering order for show types
@@ -58,6 +60,12 @@ class ShowHoldHold extends React.Component
     this.loadShowData(this.state.allshows,this.state.language,this.state.year,this.state.season,1);
   }
 
+  //public, toggle removeable mode of show elements
+  toggleRemovable()
+  {
+    this.setState({removeDisabled:this.state.removeDisabled?1:0});
+  }
+
   render()
   {
     var res=[];
@@ -67,7 +75,8 @@ class ShowHoldHold extends React.Component
       if (this.state.allshows[this.defaultTypeSortOrder[x]])
       {
         res.push(<ShowHold shows={this.state.allshows[this.defaultTypeSortOrder[x]]}
-          name={this.defaultTypeSortOrder[x]} key={x} language={this.state.language} removeShow={this.removeShow}/>
+          name={this.defaultTypeSortOrder[x]} key={x} language={this.state.language}
+          removeShow={this.removeShow} dontShowRemove={this.state.removeDisabled}/>
         );
       }
     }
@@ -82,11 +91,12 @@ class ShowHoldHold extends React.Component
 }
 
 /*show holder element. holds shows.
-  ShowHold(Show-array shows, string name, string language, parent-function removeShow)
+  ShowHold(Show-array shows, string name, string language, parent-function removeShow, bool dontShowRemove=null)
   shows: array of shows
   name: name/type of shows of this group
   language: language string to use
-  removeShow: function from ShowHoldHold*/
+  removeShow: function from ShowHoldHold
+  dontShowRemove: if remove button should not be there in children show elements*/
 class ShowHold extends React.Component
 {
   render()
@@ -98,7 +108,8 @@ class ShowHold extends React.Component
 
         <div className="actual-shows">
           {this.props.shows.map((x,i)=>{
-            return <Show data={x} key={i} language={this.props.language} removeShow={this.props.removeShow}/>;
+            return <Show data={x} key={i} language={this.props.language}
+              removeShow={this.props.removeShow} dontShowRemove={this.props.dontShowRemove}/>;
           })}
         </div>
       </div>
@@ -107,12 +118,13 @@ class ShowHold extends React.Component
 }
 
 /*a Show element.
-  Show(Show data, string-enum language, parent-function removeShow)
+  Show(Show data, string-enum language, parent-function removeShow,bool dontShowRemove=null)
   data: full Show data object, see in data defs.gql
   language: string for choosing language.
             usually something like: "native","romaji","english".
             does defaulting if missing.
-  removeShow: function from ShowHold*/
+  removeShow: function from ShowHold
+  dontShowRemove: if remove button should not be there*/
 class Show extends React.Component
 {
   render()
@@ -153,11 +165,20 @@ class Show extends React.Component
 
         <p className="date">{date}</p>
 
-        <div className="control-link" onClick={()=>{
-          this.props.removeShow(this.props.data.format,this.props.data.title.romaji);
-        }}>
-          remove
-        </div>
+        {(()=>{
+          if (!this.props.dontShowRemove)
+          {
+            return (
+              <div className="control-link" onClick={()=>{
+                this.props.removeShow(this.props.data.format,this.props.data.title.romaji);
+              }}>
+                remove
+              </div>
+            );
+          }
+
+          return null;
+        })()}
       </div>
     );
   }

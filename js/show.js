@@ -6,7 +6,8 @@ class ShowHoldHold extends React.Component {
       allshows: {},
       language: "native",
       year: "",
-      season: ""
+      season: "",
+      removeDisabled: 0
     };
     this.defaultTypeSortOrder = ["TV", "SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
     this.parentContainer = document.querySelector(".show-holder-holders");
@@ -42,6 +43,12 @@ class ShowHoldHold extends React.Component {
     this.loadShowData(this.state.allshows, this.state.language, this.state.year, this.state.season, 1);
   }
 
+  toggleRemovable() {
+    this.setState({
+      removeDisabled: this.state.removeDisabled ? 1 : 0
+    });
+  }
+
   render() {
     var res = [];
 
@@ -52,7 +59,8 @@ class ShowHoldHold extends React.Component {
           name: this.defaultTypeSortOrder[x],
           key: x,
           language: this.state.language,
-          removeShow: this.removeShow
+          removeShow: this.removeShow,
+          dontShowRemove: this.state.removeDisabled
         }));
       }
     }
@@ -81,7 +89,8 @@ class ShowHold extends React.Component {
         data: x,
         key: i,
         language: this.props.language,
-        removeShow: this.props.removeShow
+        removeShow: this.props.removeShow,
+        dontShowRemove: this.props.dontShowRemove
       });
     })));
   }
@@ -125,12 +134,18 @@ class Show extends React.Component {
       }, x);
     })), React.createElement("p", {
       className: "date"
-    }, date), React.createElement("div", {
-      className: "control-link",
-      onClick: () => {
-        this.props.removeShow(this.props.data.format, this.props.data.title.romaji);
+    }, date), (() => {
+      if (!this.props.dontShowRemove) {
+        return React.createElement("div", {
+          className: "control-link",
+          onClick: () => {
+            this.props.removeShow(this.props.data.format, this.props.data.title.romaji);
+          }
+        }, "remove");
       }
-    }, "remove"));
+
+      return null;
+    })());
   }
 
 }
