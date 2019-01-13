@@ -163,8 +163,11 @@ function seasonConvert(seasonstring)
 //debug test produce a screenshot
 function testScreenshot()
 {
-    html2canvas(document.querySelector(".show-hold-middle"),{allowTaint:true}).then((canvas)=>{
+    var showmiddle=document.querySelector(".show-hold-middle");
+    showmiddle.classList.add("no-border");
+    html2canvas(showmiddle,{allowTaint:true}).then((canvas)=>{
         document.querySelector(".menubar").appendChild(canvas);
+        showmiddle.classList.remove("no-border");
     });
 }
 

@@ -67,6 +67,9 @@ a:hover {
   background-color: var(--main-colour);
   border-right: 1px dashed white;
 }
+.show-holder-holders .show-hold-middle.no-border {
+  border: none;
+}
 .menubar {
   width: 320px;
 }
