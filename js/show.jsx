@@ -150,6 +150,19 @@ class Show extends React.Component
       }
     }
 
+    //set the remove button, unless it is disabled
+    var removeButton=null;
+    if (!this.props.dontShowRemove)
+    {
+      removeButton=(
+        <div className="control-link" onClick={()=>{
+          this.props.removeShow(this.props.data.format,this.props.data.title.romaji);
+        }}>
+          remove
+        </div>
+      );
+    }
+
     return (
       <div className="show">
         <img src={this.props.data.coverImage.large}/>
@@ -165,20 +178,7 @@ class Show extends React.Component
 
         <p className="date">{date}</p>
 
-        {(()=>{
-          if (!this.props.dontShowRemove)
-          {
-            return (
-              <div className="control-link" onClick={()=>{
-                this.props.removeShow(this.props.data.format,this.props.data.title.romaji);
-              }}>
-                remove
-              </div>
-            );
-          }
-
-          return null;
-        })()}
+        {removeButton}
       </div>
     );
   }

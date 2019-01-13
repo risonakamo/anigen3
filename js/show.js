@@ -115,6 +115,17 @@ class Show extends React.Component {
       }
     }
 
+    var removeButton = null;
+
+    if (!this.props.dontShowRemove) {
+      removeButton = React.createElement("div", {
+        className: "control-link",
+        onClick: () => {
+          this.props.removeShow(this.props.data.format, this.props.data.title.romaji);
+        }
+      }, "remove");
+    }
+
     return React.createElement("div", {
       className: "show"
     }, React.createElement("img", {
@@ -134,18 +145,7 @@ class Show extends React.Component {
       }, x);
     })), React.createElement("p", {
       className: "date"
-    }, date), (() => {
-      if (!this.props.dontShowRemove) {
-        return React.createElement("div", {
-          className: "control-link",
-          onClick: () => {
-            this.props.removeShow(this.props.data.format, this.props.data.title.romaji);
-          }
-        }, "remove");
-      }
-
-      return null;
-    })());
+    }, date), removeButton);
   }
 
 }
