@@ -2,6 +2,7 @@ class AniGenTop extends React.Component {
   constructor(props) {
     super(props);
     this.renderShows = this.renderShows.bind(this);
+    this.setHoldWidth = this.setHoldWidth.bind(this);
     this.showHoldHold = React.createRef();
   }
 
@@ -11,9 +12,16 @@ class AniGenTop extends React.Component {
     });
   }
 
+  setHoldWidth(newwidth) {
+    if (newwidth >= 1000) {
+      this.showHoldHold.current.setHoldWidth(newwidth);
+    }
+  }
+
   render() {
     return React.createElement(React.Fragment, null, React.createElement(ShowMenu, {
-      renderShows: this.renderShows
+      renderShows: this.renderShows,
+      setHoldWidth: this.setHoldWidth
     }), ReactDOM.createPortal(React.createElement(ShowHoldHold, {
       ref: this.showHoldHold
     }), document.querySelector(".show-holder-holders")));

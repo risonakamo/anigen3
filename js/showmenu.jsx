@@ -1,6 +1,7 @@
 /*menu element.
-  ShowMenu(function renderShows)
-  renderShows: function from parent AniGenTop*/
+  ShowMenu(parent-function renderShows,parent-function setHoldWidth)
+  renderShows: function from parent AniGenTop
+  setHoldWidth: function from parent AniGenTop*/
 class ShowMenu extends React.Component
 {
   constructor(props)
@@ -70,6 +71,19 @@ class ShowMenu extends React.Component
     this.props.renderShows(data.username,data.season[1],data.year,data.lang[1]);
   }
 
+  //call width set function from parent, and do error checking/clamping
+  //on the width input element value. give it an event from width input
+  //element. keyboard onchange doesnt use this because it ignores error checking
+  setWidthWrapper(e)
+  {
+    if (!e.currentTarget.value || e.currentTarget.value<1000)
+    {
+      e.currentTarget.value=1000;
+    }
+
+    this.props.setHoldWidth(e.currentTarget.value);
+  }
+
   render()
   {
     return <>
@@ -112,7 +126,14 @@ class ShowMenu extends React.Component
 
       <div className="menu-block">
         <div className="left-text"></div>
-        <input type="number" className="white-textbox smaller" onWheel={(e)=>{wheelIncrement(e,100)}}/>
+        <input type="number" className="white-textbox smaller"
+          onWheel={(e)=>{
+            wheelIncrement(e,100);
+            this.setWidthWrapper(e);
+          }}
+
+          onChange={(e)=>{this.props.setHoldWidth(e.currentTarget.value)}}
+        />
         <span className="right-text">px</span>
       </div>
 

@@ -45,6 +45,14 @@ class ShowMenu extends React.Component {
     this.props.renderShows(data.username, data.season[1], data.year, data.lang[1]);
   }
 
+  setWidthWrapper(e) {
+    if (!e.currentTarget.value || e.currentTarget.value < 1000) {
+      e.currentTarget.value = 1000;
+    }
+
+    this.props.setHoldWidth(e.currentTarget.value);
+  }
+
   render() {
     return React.createElement(React.Fragment, null, React.createElement("div", {
       className: "menu-block"
@@ -108,6 +116,10 @@ class ShowMenu extends React.Component {
       className: "white-textbox smaller",
       onWheel: e => {
         wheelIncrement(e, 100);
+        this.setWidthWrapper(e);
+      },
+      onChange: e => {
+        this.props.setHoldWidth(e.currentTarget.value);
       }
     }), React.createElement("span", {
       className: "right-text"

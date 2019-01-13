@@ -19,6 +19,8 @@ class ShowHoldHold extends React.Component
     //rendering order for show types
     this.defaultTypeSortOrder=["TV","SHORT","MUSIC","MOVIE","SPECIAL","OVA","ONA"];
     this.parentContainer=document.querySelector(".show-holder-holders"); //the parent element that holds stuff
+
+    this.showHoldMiddle=React.createRef();
   }
 
   //public, recieve a show data object and load it
@@ -66,6 +68,12 @@ class ShowHoldHold extends React.Component
     this.setState({removeDisabled:this.state.removeDisabled?1:0});
   }
 
+  //public, change show hold width size
+  setHoldWidth(newwidth)
+  {
+    this.showHoldMiddle.current.style.width=`${newwidth}px`;
+  }
+
   render()
   {
     var res=[];
@@ -82,7 +90,7 @@ class ShowHoldHold extends React.Component
     }
 
     return <>
-      <div className="show-hold-middle">
+      <div className="show-hold-middle" ref={this.showHoldMiddle}>
         <h1 className="chart-title"><span>{this.state.season}</span>{this.state.year}アニメ</h1>
         {res}
       </div>

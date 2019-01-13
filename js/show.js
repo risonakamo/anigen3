@@ -11,6 +11,7 @@ class ShowHoldHold extends React.Component {
     };
     this.defaultTypeSortOrder = ["TV", "SHORT", "MUSIC", "MOVIE", "SPECIAL", "OVA", "ONA"];
     this.parentContainer = document.querySelector(".show-holder-holders");
+    this.showHoldMiddle = React.createRef();
   }
 
   loadShowData(data, language, year, season, dontscroll) {
@@ -49,6 +50,10 @@ class ShowHoldHold extends React.Component {
     });
   }
 
+  setHoldWidth(newwidth) {
+    this.showHoldMiddle.current.style.width = `${newwidth}px`;
+  }
+
   render() {
     var res = [];
 
@@ -66,7 +71,8 @@ class ShowHoldHold extends React.Component {
     }
 
     return React.createElement(React.Fragment, null, React.createElement("div", {
-      className: "show-hold-middle"
+      className: "show-hold-middle",
+      ref: this.showHoldMiddle
     }, React.createElement("h1", {
       className: "chart-title"
     }, React.createElement("span", null, this.state.season), this.state.year, "\u30A2\u30CB\u30E1"), res));
