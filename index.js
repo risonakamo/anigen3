@@ -97,7 +97,7 @@ function processAnlistDataShowType(data,season="WINTER",year=2019)
             //shows missing date data go to the end
             if (a.startDate.month==null || !a.startDate.day || b.startDate.month==null || !b.startDate.day)
             {
-                return -1;
+                return 1;
             }
 
             //date takes month index
