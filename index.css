@@ -49,6 +49,10 @@ a:hover {
   height: 100%;
   flex: 1;
   overflow: auto;
+  cursor: -webkit-grab;
+}
+.show-holder-holders:active {
+  cursor: -webkit-grabbing;
 }
 .show-holder-holders .chart-title {
   font-size: 30px;
