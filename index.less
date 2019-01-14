@@ -254,6 +254,25 @@ a
         margin-left: 10px;
     }
 
+    //special height text element
+    span.height-text
+    {
+        &:extend(.menu-block span.right-text);
+
+        display: inline-flex;
+        width: 106px; //calculated to put img box in relatively centre position
+        height: 183px; //calculated to be same height as img box
+        line-height: 1;
+        vertical-align: top;
+        text-align: center;
+        word-break: break-word;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
     //for larger top margin
     &.double-top
     {
@@ -284,9 +303,11 @@ a
     font-size: 20px;
     color: var(--main-colour);
 
-    &.smaller
+    //smaller number input for width adjust
+    &.width-box
     {
         width: 90px;
+        margin-left: 5px;
     }
 }
 
@@ -373,8 +394,8 @@ a
 //image output div
 .img-out
 {
+    display: inline-block;
     width: 175px;
     height: 175px;
     border: 4px dotted white;
-    margin: auto;
 }

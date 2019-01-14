@@ -127,7 +127,7 @@ class ShowMenu extends React.Component {
       className: "left-text"
     }), React.createElement("input", {
       type: "number",
-      className: "white-textbox smaller",
+      className: "white-textbox width-box",
       onWheel: e => {
         wheelIncrement(e, 100);
         this.setWidthWrapper(e);
@@ -139,7 +139,9 @@ class ShowMenu extends React.Component {
       className: "right-text"
     }, "px")), React.createElement("div", {
       className: "menu-block"
-    }, React.createElement("div", {
+    }, React.createElement("span", {
+      className: "height-text"
+    }, "1000 px"), React.createElement("div", {
       className: "img-out"
     })), React.createElement("div", {
       className: "menu-block no-top"

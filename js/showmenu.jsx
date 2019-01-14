@@ -143,7 +143,7 @@ class ShowMenu extends React.Component
       <div className="inactive" ref={this.menuModes[1]}>
         <div className="menu-block">
           <div className="left-text"></div>
-          <input type="number" className="white-textbox smaller"
+          <input type="number" className="white-textbox width-box"
             onWheel={(e)=>{
               wheelIncrement(e,100);
               this.setWidthWrapper(e);
@@ -155,6 +155,7 @@ class ShowMenu extends React.Component
         </div>
 
         <div className="menu-block">
+          <span className="height-text">1000 px</span>
           <div className="img-out"></div>
         </div>
 

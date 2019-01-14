@@ -163,9 +163,24 @@ a:hover {
 .menu-block .left-text.top {
   vertical-align: top;
 }
-.menu-block span.right-text {
+.menu-block span.right-text,
+.menu-block span.height-text {
   font-size: 18px;
   margin-left: 10px;
+}
+.menu-block span.height-text {
+  display: inline-flex;
+  width: 106px;
+  height: 183px;
+  line-height: 1;
+  vertical-align: top;
+  text-align: center;
+  word-break: break-word;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 0;
+  box-sizing: border-box;
 }
 .menu-block.double-top {
   padding-top: 20px;
@@ -186,8 +201,9 @@ a:hover {
   font-size: 20px;
   color: var(--main-colour);
 }
-.white-textbox.smaller {
+.white-textbox.width-box {
   width: 90px;
+  margin-left: 5px;
 }
 .white-multiselect {
   display: inline-block;
@@ -241,8 +257,8 @@ a:hover {
   padding: 0;
 }
 .img-out {
+  display: inline-block;
   width: 175px;
   height: 175px;
   border: 4px dotted white;
-  margin: auto;
 }
