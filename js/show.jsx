@@ -1,5 +1,6 @@
 /*holds and handles show holders.
-  ShowHoldHold()*/
+  ShowHoldHold(ShowMenu-ref showMenu)
+  showMenu: ref to showmenu object*/
 class ShowHoldHold extends React.Component
 {
   constructor(props)
@@ -21,6 +22,14 @@ class ShowHoldHold extends React.Component
     this.parentContainer=document.querySelector(".show-holder-holders"); //the parent element that holds stuff
 
     this.showHoldMiddle=React.createRef();
+  }
+
+  componentDidUpdate()
+  {
+    if (this.props.showMenu.current)
+    {
+      this.props.showMenu.current.updateHeight();
+    }
   }
 
   //public, recieve a show data object and load it

@@ -9,6 +9,7 @@ class AniGenTop extends React.Component
     this.setHoldWidth=this.setHoldWidth.bind(this);
 
     this.showHoldHold=React.createRef();
+    this.showMenu=React.createRef();
   }
 
   //public passdown, perform api query and show render
@@ -33,9 +34,10 @@ class AniGenTop extends React.Component
   render()
   {
     return <>
-      <ShowMenu renderShows={this.renderShows} showHoldHold={this.showHoldHold}/>
+      <ShowMenu renderShows={this.renderShows} showHoldHold={this.showHoldHold} ref={this.showMenu}/>
 
-      {ReactDOM.createPortal(<ShowHoldHold ref={this.showHoldHold}/>,document.querySelector(".show-holder-holders"))}
+      {ReactDOM.createPortal(<ShowHoldHold ref={this.showHoldHold} showMenu={this.showMenu}/>,
+        document.querySelector(".show-holder-holders"))}
     </>;
   }
 }

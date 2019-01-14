@@ -14,6 +14,12 @@ class ShowHoldHold extends React.Component {
     this.showHoldMiddle = React.createRef();
   }
 
+  componentDidUpdate() {
+    if (this.props.showMenu.current) {
+      this.props.showMenu.current.updateHeight();
+    }
+  }
+
   loadShowData(data, language, year, season, dontscroll) {
     this.setState({
       allshows: data,

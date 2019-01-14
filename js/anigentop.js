@@ -4,6 +4,7 @@ class AniGenTop extends React.Component {
     this.renderShows = this.renderShows.bind(this);
     this.setHoldWidth = this.setHoldWidth.bind(this);
     this.showHoldHold = React.createRef();
+    this.showMenu = React.createRef();
   }
 
   renderShows(username, season, year, language) {
@@ -21,9 +22,11 @@ class AniGenTop extends React.Component {
   render() {
     return React.createElement(React.Fragment, null, React.createElement(ShowMenu, {
       renderShows: this.renderShows,
-      showHoldHold: this.showHoldHold
+      showHoldHold: this.showHoldHold,
+      ref: this.showMenu
     }), ReactDOM.createPortal(React.createElement(ShowHoldHold, {
-      ref: this.showHoldHold
+      ref: this.showHoldHold,
+      showMenu: this.showMenu
     }), document.querySelector(".show-holder-holders")));
   }
 

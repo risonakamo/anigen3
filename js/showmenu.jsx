@@ -100,7 +100,7 @@ class ShowMenu extends React.Component
     this.props.showHoldHold.current.toggleRemovable();
   }
 
-  //set the height field
+  //public, set the height field
   updateHeight()
   {
     this.heightBox.current.innerText=`${this.props.showHoldHold.current.getHeight()} px`;
