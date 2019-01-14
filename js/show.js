@@ -54,6 +54,10 @@ class ShowHoldHold extends React.Component {
     this.showHoldMiddle.current.style.width = `${newwidth}px`;
   }
 
+  getHeight() {
+    return this.showHoldMiddle.current.clientHeight;
+  }
+
   render() {
     var res = [];
 

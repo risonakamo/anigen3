@@ -10,6 +10,7 @@ class ShowMenu extends React.Component {
       lang: React.createRef()
     };
     this.menuModes = [React.createRef(), React.createRef()];
+    this.heightBox = React.createRef();
   }
 
   componentDidMount() {
@@ -59,6 +60,10 @@ class ShowMenu extends React.Component {
     this.menuModes[0].current.classList.toggle("inactive");
     this.menuModes[1].current.classList.toggle("inactive");
     this.props.showHoldHold.current.toggleRemovable();
+  }
+
+  updateHeight() {
+    this.heightBox.current.innerText = `${this.props.showHoldHold.current.getHeight()} px`;
   }
 
   render() {
@@ -131,17 +136,20 @@ class ShowMenu extends React.Component {
       onWheel: e => {
         wheelIncrement(e, 100);
         this.setWidthWrapper(e);
+        this.updateHeight();
       },
       onChange: e => {
         this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value);
+        this.updateHeight();
       }
     }), React.createElement("span", {
       className: "right-text"
     }, "px")), React.createElement("div", {
       className: "menu-block"
     }, React.createElement("span", {
-      className: "height-text"
-    }, "1000 px"), React.createElement("div", {
+      className: "height-text",
+      ref: this.heightBox
+    }), React.createElement("div", {
       className: "img-out"
     })), React.createElement("div", {
       className: "menu-block no-top"

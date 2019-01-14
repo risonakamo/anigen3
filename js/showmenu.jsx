@@ -19,6 +19,7 @@ class ShowMenu extends React.Component
     };
 
     this.menuModes=[React.createRef(),React.createRef()]; //the 2 menu divs
+    this.heightBox=React.createRef(); //height display element
   }
 
   //upon render, load last saved settings, if available
@@ -99,6 +100,12 @@ class ShowMenu extends React.Component
     this.props.showHoldHold.current.toggleRemovable();
   }
 
+  //set the height field
+  updateHeight()
+  {
+    this.heightBox.current.innerText=`${this.props.showHoldHold.current.getHeight()} px`;
+  }
+
   render()
   {
     return <>
@@ -147,15 +154,19 @@ class ShowMenu extends React.Component
             onWheel={(e)=>{
               wheelIncrement(e,100);
               this.setWidthWrapper(e);
+              this.updateHeight();
             }}
 
-            onChange={(e)=>{this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value)}}
+            onChange={(e)=>{
+              this.props.showHoldHold.current.setHoldWidth(e.currentTarget.value);
+              this.updateHeight();
+            }}
           />
           <span className="right-text">px</span>
         </div>
 
         <div className="menu-block">
-          <span className="height-text">1000 px</span>
+          <span className="height-text" ref={this.heightBox}></span>
           <div className="img-out"></div>
         </div>
 
