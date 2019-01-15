@@ -171,6 +171,20 @@ function testScreenshot()
     });
 }
 
+function actualScreenshot()
+{
+    var showmiddle=document.querySelector(".show-hold-middle");
+    showmiddle.classList.add("no-border");
+
+    var imgOut=document.querySelector(".img-out");
+    imgOut.innerHTML="";
+
+    html2canvas(showmiddle,{allowTaint:true}).then((canvas)=>{
+        document.querySelector(".img-out").appendChild(canvas);
+        showmiddle.classList.remove("no-border");
+    });
+}
+
 //mouse wheel event handler for use with number boxes. increment the number
 //box by a certain number
 function wheelIncrement(e,inc=1)

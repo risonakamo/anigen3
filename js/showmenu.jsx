@@ -167,7 +167,7 @@ class ShowMenu extends React.Component
 
         <div className="menu-block">
           <span className="height-text" ref={this.heightBox}></span>
-          <div className="img-out"></div>
+          <div className="img-out" onClick={()=>{actualScreenshot()}}></div>
         </div>
 
         <div className="menu-block no-top">

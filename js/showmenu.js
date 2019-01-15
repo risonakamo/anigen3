@@ -150,7 +150,10 @@ class ShowMenu extends React.Component {
       className: "height-text",
       ref: this.heightBox
     }), React.createElement("div", {
-      className: "img-out"
+      className: "img-out",
+      onClick: () => {
+        actualScreenshot();
+      }
     })), React.createElement("div", {
       className: "menu-block no-top"
     }, React.createElement("div", {
