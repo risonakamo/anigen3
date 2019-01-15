@@ -3,9 +3,9 @@ access anilist.co account lists to view and generate seasonal charts as images f
 
 example output:
 
-<a href="https://i.imgur.com/iN4qhuE.png" target="_blank"><img src="https://i.imgur.com/iN4qhuE.png" width=150></a>
+<img src="https://i.imgur.com/iN4qhuE.png" width=150>
 
-*(click image for full size)*
+*(click image for full size (1500x2213))*
 
 ## usage
 #### loading a season
